@@ -36,7 +36,7 @@ public class MYScheduleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myschedule);
         schedule_list = (ExpandableListView) findViewById(R.id.schedule_list);
-        TextView date = (TextView) findViewById(R.id.schedule_date);
+        final TextView date = (TextView) findViewById(R.id.schedule_date);
         Calendar cal = Calendar.getInstance();
         date.setText(cal.get(Calendar.MONTH) + " 月 " + cal.get(Calendar.DAY_OF_MONTH) + " 日");
 
@@ -45,7 +45,14 @@ public class MYScheduleActivity extends Activity {
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                cn.qqtheme.framework.picker.DatePicker picker = new cn.qqtheme.framework.picker.DatePicker(MYScheduleActivity.this, cn.qqtheme.framework.picker.DatePicker.MONTH_DAY);
+                picker.setOnDatePickListener(new cn.qqtheme.framework.picker.DatePicker.OnMonthDayPickListener() {
+                    @Override
+                    public void onDatePicked(String month, String day) {
+                        date.setText(Integer.parseInt(month) + " 月 " + Integer.parseInt(day) + " 日");
+                    }
+                });
+                picker.show();
 
             }
         });
