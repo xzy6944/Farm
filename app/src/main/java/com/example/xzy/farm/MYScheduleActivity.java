@@ -2,6 +2,7 @@ package com.example.xzy.farm;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,8 @@ public class MYScheduleActivity extends Activity {
     List<String> parent = null;
     List<String> child_1 = null;
     List<String> child_2 = null;
+    List<Integer> child_1_complete = null;
+    List<Integer> child_2_complete = null;
     Map<String, List<String>> map = null;
 
     @Override
@@ -66,12 +69,17 @@ public class MYScheduleActivity extends Activity {
         map = new HashMap<String, List<String>>();
 
         child_1 = new ArrayList<String>();
+        child_1_complete = new ArrayList<Integer>();
         child_1.add("注射疫苗");
+        child_1_complete.add(0);
         child_1.add("购进新型疫苗");
+        child_1_complete.add(0);
         map.put("今日", child_1);
 
         child_2 = new ArrayList<String>();
+        child_2_complete = new ArrayList<Integer>();
         child_2.add("暂无");
+        child_2_complete.add(0);
         map.put("本周", child_2);
 
     }
@@ -129,7 +137,7 @@ public class MYScheduleActivity extends Activity {
         }
 
         @Override
-        public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, final ViewGroup parent) {
             String key = MYScheduleActivity.this.parent.get(groupPosition);
             String info = map.get(key).get(childPosition);
             if(convertView == null){
@@ -137,7 +145,37 @@ public class MYScheduleActivity extends Activity {
                 convertView = inflater.inflate(R.layout.child_list, null);
             }
             TextView text = (TextView) convertView.findViewById(R.id.child_text);
+            final ImageView star = (ImageView) convertView.findViewById(R.id.star);
             text.setText(info);
+            star.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (groupPosition){
+                        case 0:
+                            if(MYScheduleActivity.this.child_1_complete.get(childPosition) == 0){
+                                star.setBackgroundResource(R.drawable.star_yellow);
+                                MYScheduleActivity.this.child_1_complete.set(childPosition, 1);
+                            }
+                            else{
+                                star.setBackgroundResource(R.drawable.star_gray);
+                                MYScheduleActivity.this.child_1_complete.set(childPosition, 0);
+                            }
+                            break;
+                        case 1:
+                            if(MYScheduleActivity.this.child_2_complete.get(childPosition) == 0){
+                                star.setBackgroundResource(R.drawable.star_yellow);
+                                MYScheduleActivity.this.child_2_complete.set(childPosition, 1);
+                            }
+                            else{
+                                star.setBackgroundResource(R.drawable.star_gray);
+                                MYScheduleActivity.this.child_2_complete.set(childPosition, 0);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
             return convertView;
         }
 

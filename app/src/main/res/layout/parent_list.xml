@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:text="123"
-            android:textSize="50dp"
+            android:textSize="50sp"
             android:textColor="@color/blue"/>
 
         <ImageView
