@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.DatePicker;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
@@ -34,9 +36,19 @@ public class MYScheduleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myschedule);
         schedule_list = (ExpandableListView) findViewById(R.id.schedule_list);
+        TextView date = (TextView) findViewById(R.id.schedule_date);
+        Calendar cal = Calendar.getInstance();
+        date.setText(cal.get(Calendar.MONTH) + " 月 " + cal.get(Calendar.DAY_OF_MONTH) + " 日");
 
         initData();
         schedule_list.setAdapter(new MyAdapter());
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
     }
 
     public void initData(){
@@ -48,6 +60,7 @@ public class MYScheduleActivity extends Activity {
 
         child_1 = new ArrayList<String>();
         child_1.add("注射疫苗");
+        child_1.add("购进新型疫苗");
         map.put("今日", child_1);
 
         child_2 = new ArrayList<String>();
@@ -101,8 +114,10 @@ public class MYScheduleActivity extends Activity {
                 convertView = inflater.inflate(R.layout.parent_list, null);
             }
             TextView text = (TextView) convertView.findViewById(R.id.parent_text);
-//            ImageView arrow = (ImageView) convertView.findViewById(R.id.arrow_display);
+            ImageView arrow = (ImageView) convertView.findViewById(R.id.arrow);
             text.setText(MYScheduleActivity.this.parent.get(groupPosition));
+            if(isExpanded) arrow.setBackgroundResource(R.drawable.up_arrow);
+            else arrow.setBackgroundResource(R.drawable.down_arrow);
             return convertView;
         }
 

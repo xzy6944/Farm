@@ -4,6 +4,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/schedule_date"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:text="00 月 00 日"
+        android:textSize="50sp"
+        android:textColor="@color/blue"/>
+
+
     <ExpandableListView
         android:id="@+id/schedule_list"
         android:layout_width="match_parent"
