@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/top_relative"
         android:layout_width="fill_parent"
-        android:layout_height="50.0dip"
+        android:layout_height="50.0dp"
         android:background="#E6E6FA"
         >
 
@@ -16,11 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:padding="10.0dip"
             android:singleLine="true"
             android:text="湿度"
-
-            android:textSize="25dp" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="40dp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -82,7 +81,7 @@
             android:layout_height="wrap_content"
             android:textSize="40sp"
             android:text="60%~65%"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/blue"/>
     </LinearLayout>
 
 </LinearLayout>
