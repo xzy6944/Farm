@@ -63,6 +63,12 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".AddScheduleActivity"
+                  android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
+                  android:launchMode="singleTask">
+
+        </activity>
+
     </application>
 
 </manifest>

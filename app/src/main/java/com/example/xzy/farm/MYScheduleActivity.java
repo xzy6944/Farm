@@ -59,6 +59,15 @@ public class MYScheduleActivity extends Activity {
 
             }
         });
+
+        ImageView add_schedule = (ImageView) findViewById(R.id.add_schedule);
+        add_schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MYScheduleActivity.this, AddScheduleActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void initData(){
@@ -70,7 +79,7 @@ public class MYScheduleActivity extends Activity {
 
         child_1 = new ArrayList<String>();
         child_1_complete = new ArrayList<Integer>();
-        child_1.add("注射疫苗");
+        child_1.add("注射疫苗111111111111111111111111111111111111111111111111111111111111111111111111111111111");
         child_1_complete.add(0);
         child_1.add("购进新型疫苗");
         child_1_complete.add(0);
@@ -147,6 +156,26 @@ public class MYScheduleActivity extends Activity {
             TextView text = (TextView) convertView.findViewById(R.id.child_text);
             final ImageView star = (ImageView) convertView.findViewById(R.id.star);
             text.setText(info);
+            switch (groupPosition){
+                case 0:
+                    if(MYScheduleActivity.this.child_1_complete.get(childPosition) == 0){
+                        star.setBackgroundResource(R.drawable.star_gray);
+                    }
+                    else{
+                        star.setBackgroundResource(R.drawable.star_yellow);
+                    }
+                    break;
+                case 1:
+                    if(MYScheduleActivity.this.child_2_complete.get(childPosition) == 0){
+                        star.setBackgroundResource(R.drawable.star_gray);
+                    }
+                    else{
+                        star.setBackgroundResource(R.drawable.star_yellow);
+                    }
+                    break;
+                default:
+                    break;
+            }
             star.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
