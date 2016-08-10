@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
         image_to_MMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MMScheduleActivity.class);
+                Intent intent = new Intent(MainActivity.this, MYScheduleActivity.class);
                 startActivity(intent);
             }
         });
