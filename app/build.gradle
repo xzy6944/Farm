@@ -27,3 +27,9 @@ dependencies {
     compile 'cn.qqtheme.framework:FilePicker:latest.release'
     compile 'cn.qqtheme.framework:ColorPicker:latest.release'
 }
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
