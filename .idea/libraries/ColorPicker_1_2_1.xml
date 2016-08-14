@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="ColorPicker-1.2.1">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.qqtheme.framework/ColorPicker/1.2.1/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.qqtheme.framework/ColorPicker/1.2.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.qqtheme.framework/ColorPicker/1.2.1/abadeb8e96861e763d54ea8dc189a322ed08a811/ColorPicker-1.2.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
