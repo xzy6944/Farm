@@ -9,32 +9,37 @@
 
     <LinearLayout style="@style/wrap_layout" >
         <!-- 上圆角-->
-        <LinearLayout style="@style/top_layout">
+        <LinearLayout style="@style/top_layout"
+                      android:id="@+id/settinglayout1"
+            >
+
             <TextView style="@style/usertext" android:text="账号管理" />
             <ImageView style="@style/img_arrow"/>
+
         </LinearLayout>
 
         <!-- 分割线 -->
         <View style="@style/bg_line"/>
 
         <!-- 无圆角-->
-        <LinearLayout style="@style/mid_layout">
+
+        <LinearLayout style="@style/mid_layout"
+                      android:id="@+id/settinglayout2"
+            >
+
             <TextView style="@style/usertext" android:text="养殖场管理" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
         <!-- 分割线 -->
         <View style="@style/bg_line"/>
-        <!-- 无圆角-->
-        <LinearLayout style="@style/mid_layout">
-            <TextView style="@style/usertext" android:text="养殖管理" />
-            <ImageView style="@style/img_arrow"/>
-        </LinearLayout>
 
-        <View style="@style/bg_line"/>
 
         <!-- 下圆角-->
-        <LinearLayout style="@style/bottom_layout">
+        <LinearLayout style="@style/bottom_layout"
+                      android:id="@+id/settinglayout3"
+            >
+
             <TextView style="@style/usertext" android:text="设置" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.DatePicker;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -20,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import cn.qqtheme.framework.picker.DatePicker;
 
 /**
  * Created by xzy on 2016/7/9.
@@ -48,7 +48,7 @@ public class MYScheduleActivity extends Activity {
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cn.qqtheme.framework.picker.DatePicker picker = new cn.qqtheme.framework.picker.DatePicker(MYScheduleActivity.this, cn.qqtheme.framework.picker.DatePicker.MONTH_DAY);
+                DatePicker picker = new DatePicker(MYScheduleActivity.this, DatePicker.MONTH_DAY);
                 picker.setOnDatePickListener(new cn.qqtheme.framework.picker.DatePicker.OnMonthDayPickListener() {
                     @Override
                     public void onDatePicked(String month, String day) {

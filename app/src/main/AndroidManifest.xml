@@ -64,6 +64,61 @@
 
         </activity>
 
+        <activity android:name=".UsersettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".FarmSettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".TotalsettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".TemperaturesettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".HumiditySettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".LightsettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".WindsettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".BodyTemperaturesettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".AdreesssettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".PasswordSettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".MobileSettingActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
     </application>
 
 </manifest>

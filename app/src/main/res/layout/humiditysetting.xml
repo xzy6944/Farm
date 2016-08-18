@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textColor="@color/blue"
+            android:id="@+id/hdsettingbutton1"
+            android:background="#FFFFFF"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="30dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="养殖场湿度设置"
+            android:textSize="25sp"
+            android:textColor="@color/blue"
+            android:layout_marginLeft="20dp"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textColor="@color/blue"
+            android:background="#FFFFFF"
+            android:id="@+id/hdsettingbutton2"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentEnd="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置最低湿度:"
+            android:textSize="20sp"
+            android:textColor="@color/blue"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hdminsettingtext"
+            android:hint="点这里设置湿度"
+            android:layout_below="@+id/button9"
+            android:layout_centerHorizontal="true"
+            android:onClick="onMinNumberPicker"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置最高湿度:"
+            android:textSize="20sp"
+            android:textColor="@color/blue"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/hdmaxsettingtext"
+            android:hint="点这里设置湿度"
+            android:layout_below="@+id/button9"
+            android:layout_centerHorizontal="true"
+            android:onClick="onMaxNumberPicker"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

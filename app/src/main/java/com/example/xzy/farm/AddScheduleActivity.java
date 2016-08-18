@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import cn.qqtheme.framework.picker.DatePicker;
 
 /**
  * Created by xzy on 2016/7/12.
@@ -42,7 +43,7 @@ public class AddScheduleActivity extends Activity implements View.OnClickListene
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cn.qqtheme.framework.picker.DatePicker picker = new cn.qqtheme.framework.picker.DatePicker(AddScheduleActivity.this, cn.qqtheme.framework.picker.DatePicker.MONTH_DAY);
+                DatePicker picker = new DatePicker(AddScheduleActivity.this, DatePicker.MONTH_DAY);
                 picker.setOnDatePickListener(new cn.qqtheme.framework.picker.DatePicker.OnMonthDayPickListener() {
                     @Override
                     public void onDatePicked(String month, String day) {

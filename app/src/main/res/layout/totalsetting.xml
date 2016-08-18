@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    >
+    <LinearLayout style="@style/wrap_layout" >
+
+        <LinearLayout style="@style/mid_layout"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                style="@style/usertext"
+                android:text="附近的人"
+                />
+            <ImageView
+                style="@style/img_arrow"
+               />
+
+        </LinearLayout>
+
+
+        <View style="@style/bg_line"/>
+
+
+        <LinearLayout style="@style/mid_layout">
+         <TextView
+             style="@style/usertext"
+             android:text="扫一扫"
+             />
+            <ImageView
+                style="@style/img_arrow"/>
+        </LinearLayout>
+
+
+        <View style="@style/bg_line"/>
+        <LinearLayout style="@style/mid_layout">
+            <TextView
+                style="@style/usertext"
+                android:text="清空缓存"
+                />
+            <ImageView
+                style="@style/img_arrow"/>
+        </LinearLayout>
+        <LinearLayout style="@style/mid_layout"
+            android:layout_marginTop="50dp"
+            >
+        <TextView
+            style="@style/usertext"
+            android:text="是否接受消息通知"
+            />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="开"
+                android:textOff="关"
+                />
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+
+        <LinearLayout style="@style/mid_layout">
+         <TextView
+             style="@style/usertext"
+             android:text="省流量模式"
+
+             />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="开"
+                android:textOff="关"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
