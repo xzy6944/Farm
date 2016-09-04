@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.qqtheme.framework.picker.NumberPicker;
@@ -16,15 +17,15 @@ import cn.qqtheme.framework.picker.OptionPicker;
  */
 public class HumiditySettingActivity extends Activity {
 
-    EditText editText1 = null;
-    EditText editText2 =null;
+    TextView editText1 = null;
+    TextView editText2 =null;
     @Override
 
        public void onCreate(Bundle savedInstanceState){
            super.onCreate(savedInstanceState);
            setContentView(R.layout.humiditysetting);
-           editText1 = (EditText)findViewById(R.id.hdminsettingtext);
-           editText2 = (EditText)findViewById(R.id.hdmaxsettingtext);
+           editText1 = (TextView)findViewById(R.id.hdminsettingtext);
+           editText2 = (TextView)findViewById(R.id.hdmaxsettingtext);
            Button button1 = (Button)findViewById(R.id.hdsettingbutton1);
            Button button2 = (Button)findViewById(R.id.hdsettingbutton2);
            button1.setOnClickListener(new View.OnClickListener() {

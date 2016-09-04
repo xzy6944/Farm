@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.qqtheme.framework.picker.NumberPicker;
@@ -17,15 +18,15 @@ import cn.qqtheme.framework.picker.OptionPicker;
  */
 public class TemperaturesettingActivity extends Activity {
 
-    EditText editText1 = null;
-    EditText editText2 =null;
+    TextView editText1 = null;
+    TextView editText2 =null;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.temperaturesetting);
-        editText1 = (EditText)findViewById(R.id.tpmaxsettingtext);
-        editText2 = (EditText)findViewById(R.id.tpminsettingtext);
+        editText1 = (TextView)findViewById(R.id.tpmaxsettingtext);
+        editText2 = (TextView)findViewById(R.id.tpminsettingtext);
         Button button1 = (Button)findViewById(R.id.tpsettingbutton1);
         Button button2 = (Button)findViewById(R.id.tpsettingbutton2);
         button1.setOnClickListener(new View.OnClickListener() {

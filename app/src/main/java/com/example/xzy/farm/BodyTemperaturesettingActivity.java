@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.qqtheme.framework.picker.NumberPicker;
@@ -15,14 +16,14 @@ import cn.qqtheme.framework.picker.OptionPicker;
  * Created by mx on 2016/7/12.
  */
 public class BodyTemperaturesettingActivity extends Activity {
-    EditText editText1 = null;
-    EditText editText2 =null;
+    TextView editText1 = null;
+    TextView editText2 =null;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bodytpsetting);
-        editText1 = (EditText)findViewById(R.id.btpmaxsettingtext);
-        editText2 = (EditText)findViewById(R.id.btpminsettingtext);
+        editText1 = (TextView)findViewById(R.id.btpmaxsettingtext);
+        editText2 = (TextView)findViewById(R.id.btpminsettingtext);
         Button button1 = (Button)findViewById(R.id.btpsettingbutton1);
         Button button2 = (Button)findViewById(R.id.btpsettingbutton2);
         button1.setOnClickListener(new View.OnClickListener() {

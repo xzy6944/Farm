@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -18,7 +19,7 @@ import cn.qqtheme.framework.picker.AddressPicker;
  * Created by mx on 2016/7/13.
  */
 public class AdreesssettingActivity extends Activity {
-        EditText editText1,editText2,editText3;
+        TextView editText1,editText2,editText3;
        @Override
     public void onCreate(Bundle savedInstanceState){
            super.onCreate(savedInstanceState);
@@ -30,9 +31,9 @@ public class AdreesssettingActivity extends Activity {
                    onAddressPicker(view);
                }
            });
-           editText1 = (EditText)findViewById(R.id.addressedit1);
-           editText2 = (EditText)findViewById(R.id.addressedit2);
-           editText3 = (EditText)findViewById(R.id.addressedit3);
+           editText1 = (TextView)findViewById(R.id.addressedit1);
+           editText2 = (TextView)findViewById(R.id.addressedit2);
+           editText3 = (TextView)findViewById(R.id.addressedit3);
            Button button1 = (Button)findViewById(R.id.addressbutton1);
            Button button2 = (Button)findViewById(R.id.addressbutton2);
            button1.setOnClickListener(new View.OnClickListener() {

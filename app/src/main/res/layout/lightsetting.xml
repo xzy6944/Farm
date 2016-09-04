@@ -60,9 +60,10 @@
             android:textSize="20sp"
             android:textColor="@color/blue"
             />
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:id="@+id/lightminsettingtext"
             android:hint="点这里设置光强"
             android:layout_below="@+id/button9"
@@ -84,9 +85,10 @@
             android:textSize="20sp"
             android:textColor="@color/blue"/>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:id="@+id/lightmaxsettingtext"
             android:hint="点这里设置光强"
             android:layout_below="@+id/button9"

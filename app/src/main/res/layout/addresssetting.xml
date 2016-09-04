@@ -49,9 +49,10 @@
             android:textSize="30sp"
 
             />
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:hint="所在省份"
             android:id="@+id/addressedit1"
             />
@@ -79,9 +80,10 @@
             android:textSize="30sp"
 
             />
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:hint="所在市区"
             android:id="@+id/addressedit2"
             />
@@ -109,9 +111,10 @@
             android:textSize="30sp"
 
             />
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:hint="所在的县"
             android:id="@+id/addressedit3"
             />

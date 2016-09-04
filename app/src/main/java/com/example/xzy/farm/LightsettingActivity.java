@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import cn.qqtheme.framework.picker.NumberPicker;
@@ -15,14 +16,14 @@ import cn.qqtheme.framework.picker.OptionPicker;
  * Created by mx on 2016/7/12.
  */
 public class LightsettingActivity extends Activity {
-    EditText editText1;
-    EditText editText2;
+    TextView editText1;
+    TextView editText2;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lightsetting);
-        editText1 = (EditText)findViewById(R.id.lightmaxsettingtext);
-        editText2 = (EditText)findViewById(R.id.lightminsettingtext);
+        editText1 = (TextView)findViewById(R.id.lightmaxsettingtext);
+        editText2 = (TextView)findViewById(R.id.lightminsettingtext);
         Button button1 = (Button)findViewById(R.id.lightsettingbutton1);
         Button button2 = (Button)findViewById(R.id.lightsettingbutton2);
         button1.setOnClickListener(new View.OnClickListener() {
