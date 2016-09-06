@@ -9,33 +9,35 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by xzy on 2016/6/2.
+ * Created by xzy on 2016/9/5.
  */
-public class CO2Activity extends Activity {
+public class LightActivity extends Activity {
     private TextView mTextView;
     private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.co2);
+        setContentView(R.layout.light);
         Intent intent = getIntent();
         String farmID = intent.getStringExtra("farmID");
-        TextView range = (TextView) findViewById(R.id.co2_range);
+        TextView range = (TextView) findViewById(R.id.light_range);
 
         ConnectDatabase connect = new ConnectDatabase();
         ArrayList<Farm> rs = connect.queryFarm("select * from farm where farmID = " + farmID);
-        range.setText(rs.get(0).getWind_max() + "%以下");
+        range.setText(rs.get(0).getLight_min() + "Lx~" + rs.get(0).getLight_max() + "Lx");
 
         mHandler = new Handler();
-        mTextView = (TextView) findViewById(R.id.showCO2);
+        mTextView = (TextView) findViewById(R.id.showLight);
 
         mHandler.post(new Runnable() {
             @Override
             public void run(){
-                mTextView.setText("0." + String.valueOf((int)(Math.random() * 7) + 5) + "%");
+                mTextView.setText(String.valueOf((int)(Math.random() * 2) + 4) + "Lx");
                 mHandler.postDelayed(this, 2000);
             }
         });
+
+
     }
 }

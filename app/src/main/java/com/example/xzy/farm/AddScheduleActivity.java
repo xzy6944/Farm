@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import cn.qqtheme.framework.picker.DatePicker;
@@ -18,6 +19,7 @@ public class AddScheduleActivity extends Activity implements View.OnClickListene
 
     int setMonth;
     int setDay;
+    int type = 1;
     Button myButton = null;
     Button bjButton = null;
     Button xdButton = null;
@@ -27,7 +29,11 @@ public class AddScheduleActivity extends Activity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_schedule);
+        final Intent intent = getIntent();
+        final String farmID = intent.getStringExtra("farmID");
+
         final TextView date = (TextView) findViewById(R.id.set_schedule_date);
+        final EditText schedule = (EditText) findViewById(R.id.edit_schedule_content);
         myButton = (Button) findViewById(R.id.kind_my);
         bjButton = (Button) findViewById(R.id.kind_bj);
         xdButton = (Button) findViewById(R.id.kind_xd);
@@ -36,8 +42,8 @@ public class AddScheduleActivity extends Activity implements View.OnClickListene
         bjButton.setOnClickListener(this);
         xdButton.setOnClickListener(this);
 
-        Calendar cal = Calendar.getInstance();
-        setMonth = cal.get(Calendar.MONTH);
+        final Calendar cal = Calendar.getInstance();
+        setMonth = cal.get(Calendar.MONTH) + 1;
         setDay = cal.get(Calendar.DAY_OF_MONTH);
         date.setText(setMonth + " 月 " + setDay + " 日");
         date.setOnClickListener(new View.OnClickListener() {
@@ -58,19 +64,55 @@ public class AddScheduleActivity extends Activity implements View.OnClickListene
         });
 
         Button cancel = (Button) findViewById(R.id.schedule_cancel);
-        Button confirm = (Button) findViewById(R.id.schedule_confirm);
+        final Button confirm = (Button) findViewById(R.id.schedule_confirm);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddScheduleActivity.this, MYScheduleActivity.class);
-                startActivity(intent);
+                switch (intent.getIntExtra("type", 1)){
+                    case 1:
+                        {Intent intent = new Intent(AddScheduleActivity.this, MYScheduleActivity.class);
+                        intent.putExtra("farmID", farmID);
+                        startActivity(intent);}
+                        break;
+                    case 2:
+                        {Intent intent = new Intent(AddScheduleActivity.this, BJScheduleActivity.class);
+                        intent.putExtra("farmID", farmID);
+                        startActivity(intent);}
+                        break;
+                    case 3:
+                        {Intent intent = new Intent(AddScheduleActivity.this, XDScheduleActivity.class);
+                        intent.putExtra("farmID", farmID);
+                        startActivity(intent);}
+                        break;
+                }
             }
         });
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddScheduleActivity.this, MYScheduleActivity.class);
-                startActivity(intent);
+                if(0 == schedule.getText().toString().length()){
+                    Toast.makeText(AddScheduleActivity.this, "请输入待办行程", Toast.LENGTH_SHORT).show();
+                }else{
+                    ConnectDatabase connect = new ConnectDatabase();
+                    connect.update("insert into daily_management(type, date, details, farm_farmID, completion) values('" + type + "', '" + cal.get(Calendar.YEAR) + "-" + setMonth + "-" + setDay + "', '" + schedule.getText().toString() + "', '" + farmID + "', 0)");
+                    switch (intent.getIntExtra("type", 1)){
+                        case 1:
+                        {Intent intent = new Intent(AddScheduleActivity.this, MYScheduleActivity.class);
+                            intent.putExtra("farmID", farmID);
+                            startActivity(intent);}
+                        break;
+                        case 2:
+                        {Intent intent = new Intent(AddScheduleActivity.this, BJScheduleActivity.class);
+                            intent.putExtra("farmID", farmID);
+                            startActivity(intent);}
+                        break;
+                        case 3:
+                        {Intent intent = new Intent(AddScheduleActivity.this, XDScheduleActivity.class);
+                            intent.putExtra("farmID", farmID);
+                            startActivity(intent);}
+                        break;
+                    }
+                }
             }
         });
     }
@@ -79,16 +121,19 @@ public class AddScheduleActivity extends Activity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.kind_my:
+                type = 1;
                 myButton.setBackgroundResource(R.drawable.circle_corner_button_selected);
                 bjButton.setBackgroundResource(R.drawable.circle_corner_button_unselected);
                 xdButton.setBackgroundResource(R.drawable.circle_corner_button_unselected);
                 break;
             case R.id.kind_bj:
+                type = 2;
                 myButton.setBackgroundResource(R.drawable.circle_corner_button_unselected);
                 bjButton.setBackgroundResource(R.drawable.circle_corner_button_selected);
                 xdButton.setBackgroundResource(R.drawable.circle_corner_button_unselected);
                 break;
             case R.id.kind_xd:
+                type = 3;
                 myButton.setBackgroundResource(R.drawable.circle_corner_button_unselected);
                 bjButton.setBackgroundResource(R.drawable.circle_corner_button_unselected);
                 xdButton.setBackgroundResource(R.drawable.circle_corner_button_selected);

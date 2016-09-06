@@ -53,7 +53,22 @@
 
         </activity>
 
+        <activity android:name=".LightActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
         <activity android:name=".MYScheduleActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".BJScheduleActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".XDScheduleActivity"
                   android:launchMode="singleTask">
 
         </activity>
@@ -120,5 +135,7 @@
         </activity>
 
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

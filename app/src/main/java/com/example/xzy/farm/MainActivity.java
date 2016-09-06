@@ -14,12 +14,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
+        final String farmID = intent.getStringExtra("farmID");
 
-        ImageView image = (ImageView) findViewById(R.id.toSetting);
+        final ImageView image = (ImageView) findViewById(R.id.toSetting);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                intent.putExtra("farmID", farmID);
                 startActivity(intent);
             }
         });
@@ -29,6 +32,27 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MYScheduleActivity.class);
+                intent.putExtra("farmID", farmID);
+                startActivity(intent);
+            }
+        });
+
+        ImageView image_to_BJS = (ImageView) findViewById(R.id.toBJS);
+        image_to_BJS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BJScheduleActivity.class);
+                intent.putExtra("farmID", farmID);
+                startActivity(intent);
+            }
+        });
+
+        ImageView image_to_XDS = (ImageView) findViewById(R.id.toXDS);
+        image_to_XDS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, XDScheduleActivity.class);
+                intent.putExtra("farmID", farmID);
                 startActivity(intent);
             }
         });
@@ -38,6 +62,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TemperatureActivity.class);
+                intent.putExtra("farmID", farmID);
                 startActivity(intent);
             }
         });
@@ -47,6 +72,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, HumidityActivity.class);
+                intent.putExtra("farmID", farmID);
                 startActivity(intent);
             }
         });
@@ -56,6 +82,17 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CO2Activity.class);
+                intent.putExtra("farmID", farmID);
+                startActivity(intent);
+            }
+        });
+
+        Button button_light = (Button) findViewById(R.id.button4);
+        button_light.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LightActivity.class);
+                intent.putExtra("farmID", farmID);
                 startActivity(intent);
             }
         });

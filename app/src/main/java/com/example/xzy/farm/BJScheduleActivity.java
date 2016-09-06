@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,15 +16,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
+
 import cn.qqtheme.framework.picker.DatePicker;
 
 /**
- * Created by xzy on 2016/7/9.
+ * Created by xzy on 2016/9/6.
  */
-public class MYScheduleActivity extends Activity {
-
+public class BJScheduleActivity extends Activity {
     String farmID = null;
     Calendar cal = null;
     Calendar cal1 = null;
@@ -42,7 +40,7 @@ public class MYScheduleActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myschedule);
+        setContentView(R.layout.bjschedule);
         Intent intent = getIntent();
         farmID = intent.getStringExtra("farmID");
 
@@ -59,7 +57,7 @@ public class MYScheduleActivity extends Activity {
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatePicker picker = new DatePicker(MYScheduleActivity.this, DatePicker.MONTH_DAY);
+                DatePicker picker = new DatePicker(BJScheduleActivity.this, DatePicker.MONTH_DAY);
                 picker.setOnDatePickListener(new cn.qqtheme.framework.picker.DatePicker.OnMonthDayPickListener() {
                     @Override
                     public void onDatePicked(String month, String day) {
@@ -79,9 +77,9 @@ public class MYScheduleActivity extends Activity {
         add_schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MYScheduleActivity.this, AddScheduleActivity.class);
+                Intent intent = new Intent(BJScheduleActivity.this, AddScheduleActivity.class);
                 intent.putExtra("farmID", farmID);
-                intent.putExtra("type", 1);
+                intent.putExtra("type", 2);
                 startActivity(intent);
             }
         });
@@ -97,7 +95,7 @@ public class MYScheduleActivity extends Activity {
 
         child_1 = new ArrayList<String>();
         child_1_complete = new ArrayList<Integer>();
-        ArrayList<Daily> rs1 = connect.queryDaily("select * from daily_management where farm_farmID = " + farmID + " and type = '1'" + " and date = '" + cal.get(Calendar.YEAR) + "-"+ (cal.get(Calendar.MONTH) + 1) + "-"+ cal.get(Calendar.DAY_OF_MONTH) + "'");
+        ArrayList<Daily> rs1 = connect.queryDaily("select * from daily_management where farm_farmID = " + farmID + " and type = '2'" + " and date = '" + cal.get(Calendar.YEAR) + "-"+ (cal.get(Calendar.MONTH) + 1) + "-"+ cal.get(Calendar.DAY_OF_MONTH) + "'");
         for(int i = 0; i < rs1.size(); i++){
             child_1.add(rs1.get(i).getDetails());
             child_1_complete.add(rs1.get(i).getCompletion());
@@ -112,7 +110,7 @@ public class MYScheduleActivity extends Activity {
         child_2_complete = new ArrayList<Integer>();
         cal1.add(Calendar.DAY_OF_MONTH, +1);
         cal2.add(Calendar.DAY_OF_MONTH, +7);
-        ArrayList<Daily> rs2 = connect.queryDaily("select * from daily_management where farm_farmID = " + farmID + " and type = '1'" + " and date between '" + cal1.get(Calendar.YEAR) + "-"+ (cal1.get(Calendar.MONTH) + 1) + "-"+ cal1.get(Calendar.DAY_OF_MONTH) + "' and '" + cal2.get(Calendar.YEAR) + "-"+ (cal2.get(Calendar.MONTH) + 1) + "-"+ cal2.get(Calendar.DAY_OF_MONTH) + "'");
+        ArrayList<Daily> rs2 = connect.queryDaily("select * from daily_management where farm_farmID = " + farmID + " and type = '2'" + " and date between '" + cal1.get(Calendar.YEAR) + "-"+ (cal1.get(Calendar.MONTH) + 1) + "-"+ cal1.get(Calendar.DAY_OF_MONTH) + "' and '" + cal2.get(Calendar.YEAR) + "-"+ (cal2.get(Calendar.MONTH) + 1) + "-"+ cal2.get(Calendar.DAY_OF_MONTH) + "'");
         for(int i = 0; i < rs2.size(); i++){
             child_2.add(rs2.get(i).getDetails());
             child_2_complete.add(rs2.get(i).getCompletion());
@@ -123,7 +121,7 @@ public class MYScheduleActivity extends Activity {
 
     }
 
-    class MyAdapter extends BaseExpandableListAdapter{
+    class MyAdapter extends BaseExpandableListAdapter {
         @Override
         public int getGroupCount() {
             return parent.size();
@@ -164,12 +162,12 @@ public class MYScheduleActivity extends Activity {
         @Override
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
             if(convertView == null){
-                LayoutInflater inflater = (LayoutInflater) MYScheduleActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) BJScheduleActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.parent_list, null);
             }
             TextView text = (TextView) convertView.findViewById(R.id.parent_text);
             ImageView arrow = (ImageView) convertView.findViewById(R.id.arrow);
-            text.setText(MYScheduleActivity.this.parent.get(groupPosition));
+            text.setText(BJScheduleActivity.this.parent.get(groupPosition));
             if(isExpanded) arrow.setBackgroundResource(R.drawable.up_arrow);
             else arrow.setBackgroundResource(R.drawable.down_arrow);
             return convertView;
@@ -177,10 +175,10 @@ public class MYScheduleActivity extends Activity {
 
         @Override
         public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, final ViewGroup parent) {
-            String key = MYScheduleActivity.this.parent.get(groupPosition);
+            String key = BJScheduleActivity.this.parent.get(groupPosition);
             String info = map.get(key).get(childPosition);
             if(convertView == null){
-                LayoutInflater inflater = (LayoutInflater) MYScheduleActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater inflater = (LayoutInflater) BJScheduleActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.child_list, null);
             }
             TextView text = (TextView) convertView.findViewById(R.id.child_text);
@@ -188,7 +186,7 @@ public class MYScheduleActivity extends Activity {
             text.setText(info);
             switch (groupPosition){
                 case 0:
-                    if(MYScheduleActivity.this.child_1_complete.get(childPosition) == 0){
+                    if(BJScheduleActivity.this.child_1_complete.get(childPosition) == 0){
                         star.setBackgroundResource(R.drawable.star_gray);
                     }
                     else{
@@ -196,7 +194,7 @@ public class MYScheduleActivity extends Activity {
                     }
                     break;
                 case 1:
-                    if(MYScheduleActivity.this.child_2_complete.get(childPosition) == 0){
+                    if(BJScheduleActivity.this.child_2_complete.get(childPosition) == 0){
                         star.setBackgroundResource(R.drawable.star_gray);
                     }
                     else{
@@ -211,27 +209,27 @@ public class MYScheduleActivity extends Activity {
                 public void onClick(View v) {
                     switch (groupPosition){
                         case 0:
-                            if(MYScheduleActivity.this.child_1_complete.get(childPosition) == 0){
+                            if(BJScheduleActivity.this.child_1_complete.get(childPosition) == 0){
                                 star.setBackgroundResource(R.drawable.star_yellow);
-                                MYScheduleActivity.this.child_1_complete.set(childPosition, 1);
-                                connect.update("update daily_management set completion = 1 where farm_farmID = "  + farmID + " and type = '1'" + " and details = '" + MYScheduleActivity.this.child_1.get(childPosition) + "'");
+                                BJScheduleActivity.this.child_1_complete.set(childPosition, 1);
+                                connect.update("update daily_management set completion = 1 where farm_farmID = "  + farmID + " and type = '2'" + " and details = '" + BJScheduleActivity.this.child_1.get(childPosition) + "'");
                             }
                             else{
                                 star.setBackgroundResource(R.drawable.star_gray);
-                                MYScheduleActivity.this.child_1_complete.set(childPosition, 0);
-                                connect.update("update daily_management set completion = 0 where farm_farmID = "  + farmID + " and type = '1'" + " and details = '" + MYScheduleActivity.this.child_1.get(childPosition) + "'");
+                                BJScheduleActivity.this.child_1_complete.set(childPosition, 0);
+                                connect.update("update daily_management set completion = 0 where farm_farmID = "  + farmID + " and type = '2'" + " and details = '" + BJScheduleActivity.this.child_1.get(childPosition) + "'");
                             }
                             break;
                         case 1:
-                            if(MYScheduleActivity.this.child_2_complete.get(childPosition) == 0){
+                            if(BJScheduleActivity.this.child_2_complete.get(childPosition) == 0){
                                 star.setBackgroundResource(R.drawable.star_yellow);
-                                MYScheduleActivity.this.child_2_complete.set(childPosition, 1);
-                                connect.update("update daily_management set completion = 1 where farm_farmID = "  + farmID + " and type = '1'" + " and details = '" + MYScheduleActivity.this.child_2.get(childPosition) + "'");
+                                BJScheduleActivity.this.child_2_complete.set(childPosition, 1);
+                                connect.update("update daily_management set completion = 1 where farm_farmID = "  + farmID + " and type = '2'" + " and details = '" + BJScheduleActivity.this.child_2.get(childPosition) + "'");
                             }
                             else{
                                 star.setBackgroundResource(R.drawable.star_gray);
-                                MYScheduleActivity.this.child_2_complete.set(childPosition, 0);
-                                connect.update("update daily_management set completion = 0 where farm_farmID = "  + farmID + " and type = '1'" + " and details = '" + MYScheduleActivity.this.child_2.get(childPosition) + "'");
+                                BJScheduleActivity.this.child_2_complete.set(childPosition, 0);
+                                connect.update("update daily_management set completion = 0 where farm_farmID = "  + farmID + " and type = '2'" + " and details = '" + BJScheduleActivity.this.child_2.get(childPosition) + "'");
                             }
                             break;
                         default:
