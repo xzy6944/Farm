@@ -15,12 +15,17 @@ public class SettingsActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        Intent intent = getIntent();
+        final String farmID = intent.getStringExtra("farmID");
+        final String userID = intent.getStringExtra("userID");
 
         View tousersetting = findViewById(R.id.settinglayout1);
         tousersetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this,UsersettingActivity.class);
+                intent.putExtra("farmID", farmID);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });

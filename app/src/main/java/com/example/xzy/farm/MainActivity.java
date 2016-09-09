@@ -16,6 +16,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         final String farmID = intent.getStringExtra("farmID");
+        final String userID = intent.getStringExtra("userID");
 
         final ImageView image = (ImageView) findViewById(R.id.toSetting);
         image.setOnClickListener(new View.OnClickListener() {
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
                 intent.putExtra("farmID", farmID);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });

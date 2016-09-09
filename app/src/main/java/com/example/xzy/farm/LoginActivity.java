@@ -39,6 +39,7 @@ public class LoginActivity extends Activity {
                         String farmID = rs1.get(0).getFarmID();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("farmID", farmID);
+                        intent.putExtra("userID", u);
                         startActivity(intent);
                     }else{
                         Toast.makeText(LoginActivity.this, "账号或密码错误！",Toast.LENGTH_SHORT).show();
