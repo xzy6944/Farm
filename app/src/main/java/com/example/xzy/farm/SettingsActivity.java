@@ -2,11 +2,9 @@ package com.example.xzy.farm;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 
 public class SettingsActivity extends Activity {
 
@@ -15,17 +13,17 @@ public class SettingsActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
-        Intent intent = getIntent();
-        final String farmID = intent.getStringExtra("farmID");
-        final String userID = intent.getStringExtra("userID");
 
         View tousersetting = findViewById(R.id.settinglayout1);
         tousersetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent dataintent = getIntent();
+                String farmID= dataintent.getStringExtra("farmID");
+                String userID = dataintent.getStringExtra("userID");
                 Intent intent = new Intent(SettingsActivity.this,UsersettingActivity.class);
-                intent.putExtra("farmID", farmID);
-                intent.putExtra("userID", userID);
+                intent.putExtra("farmID",farmID);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
@@ -33,7 +31,10 @@ public class SettingsActivity extends Activity {
         tofarmsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SettingsActivity.this,FarmSettingActivity.class);
+                Intent intent = getIntent();
+                 String farmID = intent.getStringExtra("farmID");
+                 intent = new Intent(SettingsActivity.this,FarmSettingActivity.class);
+                 intent.putExtra("farmID",farmID);
                 startActivity(intent);
             }
         });

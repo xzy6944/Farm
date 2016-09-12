@@ -14,10 +14,6 @@ public class UsersettingActivity extends Activity {
          public void onCreate(Bundle savedInstanceState){
              super.onCreate(savedInstanceState);
              setContentView(R.layout.usersettting);
-             Intent intent = getIntent();
-             final String farmID = intent.getStringExtra("farmID");
-             final String userID = intent.getStringExtra("userID");
-
              Button button = (Button)findViewById(R.id.logout);
              button.setOnClickListener(new View.OnClickListener() {
                  @Override
@@ -26,11 +22,16 @@ public class UsersettingActivity extends Activity {
                      startActivity(intent);
                  }
              });
-             View toaddresssetting = findViewById(R.id.toaddresssetting);
+            View toaddresssetting = findViewById(R.id.toaddresssetting);
              toaddresssetting.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View view) {
-                     Intent intent = new Intent(UsersettingActivity.this,AdreesssettingActivity.class);
+                     Intent intent = getIntent();
+                     String farmID = intent.getStringExtra("farmID");
+                     String userID = intent.getStringExtra("userID");
+                     intent.putExtra("userID",userID);
+                     intent.putExtra("farmID",farmID);
+                     intent = new Intent(UsersettingActivity.this,AdreesssettingActivity.class);
                      startActivity(intent);
                  }
              });
@@ -38,9 +39,10 @@ public class UsersettingActivity extends Activity {
              topasswordsetting.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View view) {
+                     Intent dataintent = getIntent();
+                     String userID = dataintent.getStringExtra("userID");
                      Intent intent = new Intent(UsersettingActivity.this,PasswordSettingActivity.class);
-                     intent.putExtra("farmID", farmID);
-                     intent.putExtra("userID", userID);
+                     intent.putExtra("userID",userID);
                      startActivity(intent);
                  }
              });
@@ -48,9 +50,12 @@ public class UsersettingActivity extends Activity {
              tomobilesetting.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View view) {
+                     Intent dataintent = getIntent();
+                     String farmID = dataintent.getStringExtra("farmID");
+                     String userID = dataintent.getStringExtra("userID");
                      Intent intent = new Intent(UsersettingActivity.this,MobileSettingActivity.class);
-                     intent.putExtra("farmID", farmID);
-                     intent.putExtra("userID", userID);
+                     intent.putExtra("farmID",farmID);
+                     intent.putExtra("userID",userID);
                      startActivity(intent);
                  }
              });

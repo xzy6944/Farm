@@ -18,13 +18,24 @@ public class MainActivity extends Activity {
         final String farmID = intent.getStringExtra("farmID");
         final String userID = intent.getStringExtra("userID");
 
-        final ImageView image = (ImageView) findViewById(R.id.toSetting);
-        image.setOnClickListener(new View.OnClickListener() {
+        final ImageView image1 = (ImageView) findViewById(R.id.toSetting);
+        image1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
                 intent.putExtra("farmID", farmID);
                 intent.putExtra("userID", userID);
+                startActivity(intent);
+            }
+        });
+
+        final ImageView image2 = (ImageView) findViewById(R.id.toChart);
+        image2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SomeActivity.class);
+                intent.putExtra("userID", userID);
+                intent.putExtra("farmID", farmID);
                 startActivity(intent);
             }
         });
@@ -94,6 +105,26 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LightActivity.class);
+                intent.putExtra("farmID", farmID);
+                startActivity(intent);
+            }
+        });
+
+        Button button_farm = (Button) findViewById(R.id.button5);
+        button_farm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FarmSecurityActivity.class);
+                intent.putExtra("farmID", farmID);
+                startActivity(intent);
+            }
+        });
+
+        Button button_individual = (Button) findViewById(R.id.button6);
+        button_individual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, IndividualSecurityActivity.class);
                 intent.putExtra("farmID", farmID);
                 startActivity(intent);
             }

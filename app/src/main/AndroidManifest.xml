@@ -58,6 +58,16 @@
 
         </activity>
 
+        <activity android:name=".FarmSecurityActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".IndividualSecurityActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
         <activity android:name=".MYScheduleActivity"
                   android:launchMode="singleTask">
 
@@ -83,6 +93,17 @@
                   android:launchMode="singleTask">
 
         </activity>
+
+        <activity android:name=".SomeActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
+        <activity android:name=".DetailsActivity"
+                  android:launchMode="singleTask">
+
+        </activity>
+
 
         <activity android:name=".FarmSettingActivity"
                   android:launchMode="singleTask">

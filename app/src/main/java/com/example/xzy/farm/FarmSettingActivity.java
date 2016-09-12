@@ -17,7 +17,10 @@ public class FarmSettingActivity extends Activity {
         totpsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FarmSettingActivity.this,TemperaturesettingActivity.class);
+                Intent intent = getIntent();
+                String farmID = intent.getStringExtra("farmID");
+                intent = new Intent(FarmSettingActivity.this,TemperaturesettingActivity.class);
+                intent.putExtra("farmID",farmID);
                 startActivity(intent);
             }
         });
@@ -25,7 +28,10 @@ public class FarmSettingActivity extends Activity {
         tohdsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FarmSettingActivity.this,HumiditySettingActivity.class);
+                Intent intent = getIntent();
+                String farmID = intent.getStringExtra("farmID");
+                intent = new Intent(FarmSettingActivity.this,HumiditySettingActivity.class);
+                intent.putExtra("farmID",farmID);
                 startActivity(intent);
             }
         });
@@ -33,7 +39,10 @@ public class FarmSettingActivity extends Activity {
         tolightsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FarmSettingActivity.this,LightsettingActivity.class);
+                Intent intent =getIntent();
+                String farmID = intent.getStringExtra("farmID");
+                intent = new Intent(FarmSettingActivity.this,LightsettingActivity.class);
+                intent.putExtra("farmID",farmID);
                 startActivity(intent);
             }
         });
@@ -41,7 +50,10 @@ public class FarmSettingActivity extends Activity {
         towindsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FarmSettingActivity.this,WindsettingActivity.class);
+                Intent intent = getIntent();
+                String farmID = intent.getStringExtra("farmID");
+                intent = new Intent(FarmSettingActivity.this,WindsettingActivity.class);
+                intent.putExtra("farmID",farmID);
                 startActivity(intent);
             }
         });
@@ -49,7 +61,10 @@ public class FarmSettingActivity extends Activity {
         tobtpsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FarmSettingActivity.this,BodyTemperaturesettingActivity.class);
+                Intent intent =getIntent();
+                String farmID = intent.getStringExtra("farmID");
+                intent = new Intent(FarmSettingActivity.this,BodyTemperaturesettingActivity.class);
+                intent.putExtra("farmID",farmID);
                 startActivity(intent);
             }
         });

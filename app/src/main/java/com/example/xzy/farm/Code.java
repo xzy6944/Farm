@@ -1,10 +1,14 @@
 package com.example.xzy.farm;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -16,11 +20,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Bitmap.Config;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 public class Code extends Activity {
@@ -127,6 +134,27 @@ public class Code extends Activity {
             padding_left += base_padding_left + random.nextInt(range_padding_left);
             padding_top = base_padding_top + random.nextInt(range_padding_top);
         }
+        private void dialog(){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Code.this);
+            builder.setMessage("确认取消吗？");
+            builder.setTitle("提示");
+            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                    //Code.this.finish();
+                    Intent intent = new Intent(Code.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            builder.create().show();
+        }
 
 
     private String[] kind1 = new String[]{"鸡","鸭","鹅"};
@@ -149,20 +177,85 @@ public class Code extends Activity {
 
            Button button_sign_up = (Button) findViewById(R.id.sign_up);
            Button button_sign_up_cancel = (Button) findViewById(R.id.sign_up_cancel);
-
-           button_sign_up.setOnClickListener(new View.OnClickListener() {
+           final EditText account_text = (EditText)findViewById(R.id.account);
+           final EditText password_text = (EditText)findViewById(R.id.password);
+           password_text.clearFocus();
+           InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+           imm.hideSoftInputFromWindow(password_text.getWindowToken(),0);
+           final EditText password_config_text = (EditText)findViewById(R.id.enpassword);
+           password_config_text.clearFocus();
+           InputMethodManager imm1 = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+           imm1.hideSoftInputFromWindow(password_config_text.getWindowToken(),0);
+           account_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                @Override
-               public void onClick(View v) {
-                   Intent intent = new Intent(Code.this, LoginActivity.class);
-                   startActivity(intent);
+               public void onFocusChange(View view, boolean hasFocus) {
+                   if(!hasFocus){
+                       if(account_text.getText().toString().length()<6)
+                           Toast.makeText(Code.this,"用户名不能小于6个字符",Toast.LENGTH_SHORT).show();
+                   }
+               }
+           });
+           final String account_to_database = account_text.getText().toString();
+
+           password_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+               @Override
+               public void onFocusChange(View view, boolean hasFocus) {
+                   if(!hasFocus){
+                       if(password_text.getText().toString()                                                                                                                                                                                                                                    .length()<8)
+                           Toast.makeText(Code.this,"密码不能少于8位",Toast.LENGTH_SHORT).show();
+                   }
+               }
+           });
+            final String password_to_database = password_text.getText().toString();
+
+           password_config_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+               @Override
+               public void onFocusChange(View view, boolean hasFocus) {
+                          if(!hasFocus){
+                              if(!(password_text.getText().toString().equals(password_config_text.getText().toString()))){
+                                  Toast.makeText(Code.this,"两次密码输入不一致",Toast.LENGTH_SHORT).show();
+                              }
+                          }
                }
            });
 
+           button_sign_up.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   if(account_text.getText().toString().equals("")){
+                       Toast.makeText(Code.this,"账号不能为空",Toast.LENGTH_SHORT).show();
+                   }
+                   if(password_text.getText().toString().equals("")){
+                       Toast.makeText(Code.this,"密码不能为空",Toast.LENGTH_SHORT).show();
+                   }
+                   if(password_config_text.getText().toString().equals("")){
+                       Toast.makeText(Code.this,"请确认密码",Toast.LENGTH_SHORT).show();
+                   }
+                   if(!(account_text.getText().toString().equals(""))&&!(password_text.getText().toString().equals(""))&&!(password_config_text.getText().toString().trim().equals(""))){
+                       String mobileNumber = "18811363873";
+                       Log.d("Code.this","h");
+                       ConnectDatabase connectdatabase = new ConnectDatabase();
+                       connectdatabase.update("insert into User (ID,password,mobile) values ('"+account_text.getText().toString()+"',"+"'" +password_text.getText().toString()+"',"+ "'"+mobileNumber+"')");
+                       Intent intent = new Intent(Code.this,LoginActivity.class);
+                       startActivity(intent);
+                   }
+                   password_config_text.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                       @Override
+                       public void onFocusChange(View view, boolean hasFocus) {
+                           if(!hasFocus){
+                               if(!(password_text.getText().toString().equals(password_config_text.getText().toString()))){
+                                   Toast.makeText(Code.this,"两次密码输入不一致",Toast.LENGTH_SHORT).show();
+                               }
+                           }
+                       }
+                   });
+               }
+           });
            button_sign_up_cancel.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   Intent intent = new Intent(Code.this, LoginActivity.class);
-                   startActivity(intent);
+                   dialog();
+
                }
            });
 
@@ -197,7 +290,9 @@ public class Code extends Activity {
 
                }
            });
+
        }
+
 
 
 }

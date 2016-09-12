@@ -1,11 +1,12 @@
 package com.example.xzy.farm;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,28 +17,58 @@ import cn.qqtheme.framework.picker.OptionPicker;
  * Created by mx on 2016/7/12.
  */
 public class LightsettingActivity extends Activity {
-    TextView editText1;
-    TextView editText2;
+    private void dialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(LightsettingActivity.this);
+        builder.setMessage("确认取消吗？");
+        builder.setTitle("提示");
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                //Code.this.finish();
+                Intent intent = new Intent(LightsettingActivity.this, FarmSettingActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.create().show();
+    }
+    TextView minlightText,maxlightText;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lightsetting);
-        editText1 = (TextView)findViewById(R.id.lightmaxsettingtext);
-        editText2 = (TextView)findViewById(R.id.lightminsettingtext);
+        minlightText = (TextView) findViewById(R.id.lightmaxsettingtext);
+        maxlightText = (TextView) findViewById(R.id.lightminsettingtext);
         Button button1 = (Button)findViewById(R.id.lightsettingbutton1);
         Button button2 = (Button)findViewById(R.id.lightsettingbutton2);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LightsettingActivity.this,FarmSettingActivity.class);
-                startActivity(intent);
-            }
-        });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LightsettingActivity.this,FarmSettingActivity.class);
-                startActivity(intent);
+                float minlightdata = Float.parseFloat(minlightText.getText().toString());
+                float maxlightdata = Float.parseFloat(maxlightText.getText().toString());
+                if(minlightText.getText().toString().length()==0||maxlightText.getText().toString().length()==0||minlightdata>maxlightdata){
+                    showToast("请正确设置光照");
+                }
+                else {
+                    Intent intent = getIntent();
+                    String farmID = intent.getStringExtra("farmID");
+                    ConnectDatabase connectDatabase = new ConnectDatabase();
+                    connectDatabase.update("update farm set light_min="+minlightdata+",light_max ="+maxlightdata+"where farmID = "+farmID);
+                    intent = new Intent(LightsettingActivity.this, FarmSettingActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog();
             }
         });
     }
@@ -55,7 +86,7 @@ public class LightsettingActivity extends Activity {
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
             public void onOptionPicked(int position, String option) {
-                editText2.setText(option.toCharArray(),0,option.length());
+                minlightText.setText(option.toCharArray(),0,option.length());
                 showToast(option);
             }
         });
@@ -72,7 +103,7 @@ public class LightsettingActivity extends Activity {
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
             public void onOptionPicked(int position, String option) {
-                editText1.setText(option.toCharArray(),0,option.length());
+                maxlightText.setText(option.toCharArray(),0,option.length());
                 showToast(option);
             }
         });

@@ -1,11 +1,12 @@
 package com.example.xzy.farm;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,30 +19,57 @@ import cn.qqtheme.framework.picker.OptionPicker;
  */
 public class TemperaturesettingActivity extends Activity {
 
-    TextView editText1 = null;
-    TextView editText2 =null;
-
+    TextView mintpText,maxtpText;
+    private void dialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(TemperaturesettingActivity.this);
+        builder.setMessage("确认取消吗？");
+        builder.setTitle("提示");
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                //Code.this.finish();
+                Intent intent = new Intent(TemperaturesettingActivity.this, FarmSettingActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.create().show();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.temperaturesetting);
-        editText1 = (TextView)findViewById(R.id.tpmaxsettingtext);
-        editText2 = (TextView)findViewById(R.id.tpminsettingtext);
+        maxtpText = (TextView)findViewById(R.id.tpmaxsettingtext);
+        mintpText = (TextView)findViewById(R.id.tpminsettingtext);
         Button button1 = (Button)findViewById(R.id.tpsettingbutton1);
         Button button2 = (Button)findViewById(R.id.tpsettingbutton2);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(TemperaturesettingActivity.this,FarmSettingActivity.class);
-                startActivity(intent);
-            }
-        });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(TemperaturesettingActivity.this,FarmSettingActivity.class);
-                startActivity(intent);
+                int mintpdata = Integer.parseInt(mintpText.getText().toString());
+                int maxtpdata = Integer.parseInt(maxtpText.getText().toString());
+                if(maxtpText.getText().toString().length()==0||mintpText.getText().toString().length()==0||mintpdata>maxtpdata)
+                    Toast.makeText(TemperaturesettingActivity.this,"请正确设置温度",Toast.LENGTH_SHORT).show();
+                else {
+                    Intent intent = getIntent();
+                    String farmID = intent.getStringExtra("farmID");
+                    ConnectDatabase connectDatabase = new ConnectDatabase();
+                    connectDatabase.update("update farm set temperature_min ="+mintpdata+",temperature_max ="+maxtpdata+"where farmID ="+farmID);
+                    intent = new Intent(TemperaturesettingActivity.this, FarmSettingActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog();
             }
         });
     }
@@ -59,7 +87,7 @@ public class TemperaturesettingActivity extends Activity {
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
             public void onOptionPicked(int position, String option) {
-               editText2.setText(option.toCharArray(),0,option.length());
+               mintpText.setText(option.toCharArray(),0,option.length());
                 showToast(option);
             }
         });
@@ -76,7 +104,7 @@ public class TemperaturesettingActivity extends Activity {
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
             public void onOptionPicked(int position, String option) {
-                editText1.setText(option.toCharArray(),0,option.length());
+                maxtpText.setText(option.toCharArray(),0,option.length());
                 showToast(option);
             }
         });
