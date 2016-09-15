@@ -44,6 +44,37 @@ public class ConnectDatabase {
         }.start();
     }
 
+    public void setIOT(final int type, final String sql, final String range_start, final String range_end){
+        new Thread(){
+            @Override
+            public void run() {
+                try{
+                    Socket socket = new Socket("192.168.124.1", 25160);
+                    BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
+                    PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
+                    ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
+                    Log.d("MainActivity", "连接成功");
+
+                    toServer.write(10 + "\n");
+                    toServer.flush();
+
+                    toServer.write(type + "\n");
+                    toServer.flush();
+
+                    toServer.write(sql + "\n");
+                    toServer.flush();
+
+                    toServer.write(range_start + "\n");
+                    toServer.flush();
+
+                    toServer.write(range_end + "\n");
+                    toServer.flush();
+                }catch (Exception ex){
+                }
+            }
+        }.start();
+    }
+
     public ArrayList<Category> queryCategory(final String sql){
         final ArrayList<Category>[] rs = new ArrayList[]{new ArrayList<>()};
         final boolean[] running = {true};

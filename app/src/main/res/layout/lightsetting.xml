@@ -56,16 +56,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设置最低光照强度:"
+            android:text="设置光照开始时间:"
             android:textSize="20sp"
-            android:textColor="@color/blue"
-            />
+            android:textColor="@color/blue"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:id="@+id/lightminsettingtext"
-            android:hint="点这里设置光强"
+            android:hint="点这里设置时间"
             android:layout_below="@+id/button9"
             android:layout_centerHorizontal="true"
             android:onClick="onMinNumberPicker"
@@ -81,7 +80,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="设置最高光照强度:"
+            android:text="设置光照结束时间:"
             android:textSize="20sp"
             android:textColor="@color/blue"/>
 
@@ -90,7 +89,7 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:id="@+id/lightmaxsettingtext"
-            android:hint="点这里设置光强"
+            android:hint="点这里设置时间"
             android:layout_below="@+id/button9"
             android:layout_centerHorizontal="true"
             android:onClick="onMaxNumberPicker"

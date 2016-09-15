@@ -60,7 +60,7 @@ public class TemperaturesettingActivity extends Activity {
                     Intent intent = getIntent();
                     String farmID = intent.getStringExtra("farmID");
                     ConnectDatabase connectDatabase = new ConnectDatabase();
-                    connectDatabase.update("update farm set temperature_min ="+mintpdata+",temperature_max ="+maxtpdata+"where farmID ="+farmID);
+                    connectDatabase.setIOT(3, "update farm set temperature_min ="+mintpdata+",temperature_max ="+maxtpdata+"where farmID ="+farmID, mintpdata + "", maxtpdata + "");
                     intent = new Intent(TemperaturesettingActivity.this, FarmSettingActivity.class);
                     startActivity(intent);
                 }
@@ -80,8 +80,8 @@ public class TemperaturesettingActivity extends Activity {
     public void onMinNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
-        picker.setRange(-5, 40);//数字范围
+        picker.setOffset(1);//偏移量
+        picker.setRange(-5, 45);//数字范围
         picker.setSelectedItem(28);
         picker.setLabel("度");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
@@ -97,8 +97,8 @@ public class TemperaturesettingActivity extends Activity {
     public void onMaxNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
-        picker.setRange(-5, 40);//数字范围
+        picker.setOffset(1);//偏移量
+        picker.setRange(-5, 45);//数字范围
         picker.setSelectedItem(28);
         picker.setLabel("度");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {

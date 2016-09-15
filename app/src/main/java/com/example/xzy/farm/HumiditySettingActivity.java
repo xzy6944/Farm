@@ -51,18 +51,17 @@ public class HumiditySettingActivity extends Activity {
            button2.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                   float minhumifitydata = Float.parseFloat(minhumidityText.getText().toString());
-                   float maxhumiditydata = Float.parseFloat(maxhumidityText.getText().toString());
+                   int minhumifitydata = Integer.parseInt(minhumidityText.getText().toString());
+                   int maxhumiditydata = Integer.parseInt(maxhumidityText.getText().toString());
                    if(minhumidityText.getText().toString().length()==0||maxhumidityText.getText().toString().length()==0||minhumifitydata>maxhumiditydata)
                        showToast("请正确设置湿度");
                    else {
                         ConnectDatabase connectDatabase = new ConnectDatabase();
                         Intent intent = getIntent();
                         String farmID = intent.getStringExtra("farmID");
-                       connectDatabase.update("update farm set humidity_min="+minhumifitydata+",humidity_max ="+maxhumiditydata+"where farmID = "+farmID);
-
+                        connectDatabase.setIOT(4, "update farm set humidity_min="+minhumifitydata+",humidity_max ="+maxhumiditydata+"where farmID = "+farmID, minhumifitydata + "", maxhumiditydata + "");
                         intent = new Intent(HumiditySettingActivity.this, FarmSettingActivity.class);
-                       startActivity(intent);
+                        startActivity(intent);
                    }
                }
            });
@@ -80,9 +79,9 @@ public class HumiditySettingActivity extends Activity {
     public void onMinNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
+        picker.setOffset(1);//偏移量
         picker.setRange(0, 100);//数字范围
-        picker.setSelectedItem(28);
+        picker.setSelectedItem(45);
         picker.setLabel("%");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
@@ -97,9 +96,9 @@ public class HumiditySettingActivity extends Activity {
     public void onMaxNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
+        picker.setOffset(1);//偏移量
         picker.setRange(0, 100);//数字范围
-        picker.setSelectedItem(28);
+        picker.setSelectedItem(45);
         picker.setLabel("%");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override

@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".ReceiveService"></service>
+
         <activity android:name=".MainActivity"
                   android:launchMode="singleTask">
 
@@ -130,11 +132,6 @@
 
         </activity>
 
-        <activity android:name=".WindsettingActivity"
-                  android:launchMode="singleTask">
-
-        </activity>
-
         <activity android:name=".BodyTemperaturesettingActivity"
                   android:launchMode="singleTask">
 
@@ -158,5 +155,7 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
 </manifest>

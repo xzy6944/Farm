@@ -3,15 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFF0"
-    >
-
+    android:background="#FFFFF0">
 
     <LinearLayout style="@style/wrap_layout" >
         <!-- 上圆角-->
-        <LinearLayout style="@style/mid_layout">
+        <LinearLayout style="@style/top_layout">
             <TextView style="@style/usertext" android:text="账号" />
-
         </LinearLayout>
 
         <!-- 分割线 -->
@@ -38,10 +35,9 @@
         <View style="@style/bg_line"/>
 
         <!-- 下圆角-->
-        <LinearLayout style="@style/mid_layout"
-            android:id="@+id/tomobilesetting"
-            >
-            <TextView style="@style/usertext" android:text="绑定手机" />
+        <LinearLayout style="@style/bottom_layout"
+            android:id="@+id/tomobilesetting">
+            <TextView style="@style/usertext" android:text="绑定手机"/>
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
@@ -49,26 +45,18 @@
 
     <LinearLayout style="@style/wrap_layout" >
         <!-- 上圆角-->
-        <LinearLayout style="@style/mid_layout">
+        <LinearLayout style="@style/single_layout">
             <TextView style="@style/usertext" android:text="发布微博" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
-
-
-
-
 
     </LinearLayout>
 
 
     <!-- 全圆角-->
-    <LinearLayout style="@style/wrap_layout">
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_marginTop="50dp"
-            >
+    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="50dp">
+
+        <LinearLayout style="@style/single_layout">
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

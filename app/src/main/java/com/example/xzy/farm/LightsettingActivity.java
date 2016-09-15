@@ -50,16 +50,16 @@ public class LightsettingActivity extends Activity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float minlightdata = Float.parseFloat(minlightText.getText().toString());
-                float maxlightdata = Float.parseFloat(maxlightText.getText().toString());
+                int minlightdata = Integer.parseInt(minlightText.getText().toString());
+                int maxlightdata = Integer.parseInt(maxlightText.getText().toString());
                 if(minlightText.getText().toString().length()==0||maxlightText.getText().toString().length()==0||minlightdata>maxlightdata){
-                    showToast("请正确设置光照");
+                    showToast("请正确设置光照时间");
                 }
                 else {
                     Intent intent = getIntent();
                     String farmID = intent.getStringExtra("farmID");
                     ConnectDatabase connectDatabase = new ConnectDatabase();
-                    connectDatabase.update("update farm set light_min="+minlightdata+",light_max ="+maxlightdata+"where farmID = "+farmID);
+                    connectDatabase.setIOT(2, "update farm set light_min="+minlightdata+",light_max ="+maxlightdata+"where farmID = "+farmID, minlightdata + "", maxlightdata + "");
                     intent = new Intent(LightsettingActivity.this, FarmSettingActivity.class);
                     startActivity(intent);
                 }
@@ -79,10 +79,10 @@ public class LightsettingActivity extends Activity {
     public void onMinNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
-        picker.setRange(100, 5500);//数字范围
-        picker.setSelectedItem(28);
-        picker.setLabel("lx");
+        picker.setOffset(1);//偏移量
+        picker.setRange(0, 24);//数字范围
+        picker.setSelectedItem(0);
+        picker.setLabel("点");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
             public void onOptionPicked(int position, String option) {
@@ -96,10 +96,10 @@ public class LightsettingActivity extends Activity {
     public void onMaxNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
-        picker.setRange(100, 550);//数字范围
-        picker.setSelectedItem(28);
-        picker.setLabel("lx");
+        picker.setOffset(1);//偏移量
+        picker.setRange(0, 24);//数字范围
+        picker.setSelectedItem(0);
+        picker.setLabel("点");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
             public void onOptionPicked(int position, String option) {

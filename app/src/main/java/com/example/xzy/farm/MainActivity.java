@@ -18,6 +18,9 @@ public class MainActivity extends Activity {
         final String farmID = intent.getStringExtra("farmID");
         final String userID = intent.getStringExtra("userID");
 
+        Intent startIntent = new Intent(this, ReceiveService.class);
+        startService(startIntent);
+
         final ImageView image1 = (ImageView) findViewById(R.id.toSetting);
         image1.setOnClickListener(new View.OnClickListener() {
             @Override

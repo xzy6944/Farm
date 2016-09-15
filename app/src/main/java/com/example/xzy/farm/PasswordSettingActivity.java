@@ -44,6 +44,8 @@ public class PasswordSettingActivity extends Activity {
           setContentView(R.layout.passwordsetting);
           Button button1 = (Button)findViewById(R.id.passwordbutton1);
           Button button2 = (Button)findViewById(R.id.passwordbutton2);
+          formerpasswordText = (EditText) findViewById(R.id.type_old);
+          newpasswordText = (EditText) findViewById(R.id.type_new);
           button2.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {

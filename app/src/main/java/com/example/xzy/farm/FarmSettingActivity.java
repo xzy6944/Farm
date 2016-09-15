@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 /**
  * Created by mx on 2016/7/10.
@@ -46,17 +48,6 @@ public class FarmSettingActivity extends Activity {
                 startActivity(intent);
             }
         });
-        View towindsetting = findViewById(R.id.towindsetting);
-        towindsetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = getIntent();
-                String farmID = intent.getStringExtra("farmID");
-                intent = new Intent(FarmSettingActivity.this,WindsettingActivity.class);
-                intent.putExtra("farmID",farmID);
-                startActivity(intent);
-            }
-        });
         View tobtpsetting = findViewById(R.id.tobtpsetting);
         tobtpsetting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +59,19 @@ public class FarmSettingActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        final ConnectDatabase connect = new ConnectDatabase();
+        Switch warning = (Switch)findViewById(R.id.security_warning);
+        warning.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    connect.setIOT(5, "安全提示开启", 1 + "", 0 + "");
+                }else {
+                    connect.setIOT(5, "安全提示关闭", 0 + "", 0 + "");
+
+                }
+            }
+        });
     }
-
-
-
 }

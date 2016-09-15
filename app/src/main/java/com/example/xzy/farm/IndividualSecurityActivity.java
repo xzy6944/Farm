@@ -3,6 +3,8 @@ package com.example.xzy.farm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +14,10 @@ import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +33,11 @@ public class IndividualSecurityActivity extends Activity {
     List<SecurityInfo> child_1 = null;
     List<SecurityInfo> child_2 = null;
     Map<String, List<SecurityInfo>> map = null;
+
+    private ScheduleHelper mScheduleHelper;
+    private SQLiteDatabase db;
+    Date date;
+    DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH");
 
     class SecurityInfo{
         String time = null;
@@ -58,15 +68,40 @@ public class IndividualSecurityActivity extends Activity {
         parent.add("未读");
         parent.add("已读");
 
+        mScheduleHelper = new ScheduleHelper(this, "Schedule.db", null, 1);
+        db = mScheduleHelper.getWritableDatabase();
+
         map = new HashMap<String, List<SecurityInfo>>();
         // TODO 连接sqlite
         child_1 = new ArrayList<SecurityInfo>();
-        child_1.add(new SecurityInfo("无", "暂无未读消息。"));
+        Cursor c = db.rawQuery("select * from Schedule where type = 1 and read = 0", null);
+        if (c.getCount() == 0){
+            child_1.add(new SecurityInfo("无", "暂无未读消息。"));
+        }else{
+            if(c.moveToFirst()){
+                do{
+                    child_1.add(new SecurityInfo(c.getString(c.getColumnIndex("time")), c.getString(c.getColumnIndex("details"))));
+                }while (c.moveToNext());
+            }
+            c.close();
+        }
         map.put("未读", child_1);
 
         child_2 = new ArrayList<SecurityInfo>();
-        child_2.add(new SecurityInfo("2016-9-8", "个体38号体温偏高。"));
+        c = db.rawQuery("select * from Schedule where type = 1 and read = 1", null);//TODO
+        if (c.getCount() == 0){
+            child_2.add(new SecurityInfo("无", "暂无已读消息。"));
+        }else{
+            if(c.moveToFirst()){
+                do{
+                    child_2.add(new SecurityInfo(c.getString(c.getColumnIndex("time")), c.getString(c.getColumnIndex("details"))));
+                }while (c.moveToNext());
+            }
+            c.close();
+        }
         map.put("已读", child_2);
+
+        db.execSQL("update Schedule set read = 1 where type = 1 and read = 0");
 
     }
 

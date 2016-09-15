@@ -74,7 +74,7 @@ public class AverageTemperatureChart extends AbstractDemoChart {
         renderer.setShowGrid(true);//是否显示网格
         renderer.setXLabelsAlign(Align.RIGHT);//刻度线与刻度标注之间的相对位置关系
         renderer.setYLabelsAlign(Align.CENTER);//刻度线与刻度标注之间的相对位置关系
-        renderer.setZoomButtonsVisible(true);//是否显示放大缩小按钮
+       // renderer.setZoomButtonsVisible(true);//是否显示放大缩小按钮
         renderer.setPanLimits(new double[] { -10, 20, -10, 40 }); //设置拖动时X轴Y轴允许的最大值最小值.
         renderer.setZoomLimits(new double[] {  -10, 20, -10, 40 });//设置放大缩小时X轴Y轴允许的最大最小值.
         View view = ChartFactory.getLineChartView(context, buildDataset(titles, x, values),

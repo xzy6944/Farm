@@ -63,7 +63,7 @@ public class BodyTemperaturesettingActivity extends Activity {
                      String farmID = intent.getStringExtra("farmID");
                      ArrayList<Farm>array  = connectdatabse.queryFarm("select * from farm where farmID = "+farmID);
                      String categorydata = array.get(3).getCategory_breed();
-                     connectdatabse.update("update category set suitable_body_temperature_min ="+mintpdata+",suitable_body_temperature_max"+maxtpdata+ "where category = "+categorydata);
+                     connectdatabse.setIOT(1, "update category set suitable_body_temperature_min ="+mintpdata+",suitable_body_temperature_max"+maxtpdata+ "where category = "+categorydata, mintpdata + "", maxtpdata + "");
                      intent = new Intent(BodyTemperaturesettingActivity.this, FarmSettingActivity.class);
                      startActivity(intent);
                 }
@@ -83,9 +83,9 @@ public class BodyTemperaturesettingActivity extends Activity {
     public void onMinNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
-        picker.setRange(35, 40);//数字范围
-        picker.setSelectedItem(28);
+        picker.setOffset(1);//偏移量
+        picker.setRange(30, 45);//数字范围
+        picker.setSelectedItem(35);
         picker.setLabel("度");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
@@ -100,9 +100,9 @@ public class BodyTemperaturesettingActivity extends Activity {
     public void onMaxNumberPicker(View view){
 
         NumberPicker picker = new NumberPicker(this);
-        picker.setOffset(2);//偏移量
-        picker.setRange(35, 40);//数字范围
-        picker.setSelectedItem(28);
+        picker.setOffset(1);//偏移量
+        picker.setRange(30, 45);//数字范围
+        picker.setSelectedItem(35);
         picker.setLabel("度");
         picker.setOnOptionPickListener(new OptionPicker.OnOptionPickListener() {
             @Override
