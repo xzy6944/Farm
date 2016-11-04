@@ -71,7 +71,7 @@ public class AdreesssettingActivity extends Activity {
                        String provinceName = provinceText.getText().toString();
                        String cityName = cityText.getText().toString();
                        String countyName = countyText.getText().toString();
-                       connectdatabase.update("update farm set location = "+provinceName+""+cityName+""+countyName+""+"where farmID ="+farmID);
+                       connectdatabase.update("update farm set location = '"+provinceName+""+cityName+""+countyName+"'"+"where farmID ='"+farmID+"'");
 
                        intent = new Intent(AdreesssettingActivity.this, UsersettingActivity.class);
                        startActivity(intent);

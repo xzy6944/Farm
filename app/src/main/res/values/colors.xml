@@ -14,4 +14,7 @@
     <color name="blue">#419DE4</color>
     <color name="bk_green">#bad1a4</color>
     <color name="bk_grey">#d3d3d4</color>
+    <color name="dark_background">#262d33</color>
+    <color name="light_text">#c8cdd0</color>
+    <color name="light_blue">#4bc3cc</color>
 </resources>

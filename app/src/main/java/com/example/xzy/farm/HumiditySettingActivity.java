@@ -59,7 +59,7 @@ public class HumiditySettingActivity extends Activity {
                         ConnectDatabase connectDatabase = new ConnectDatabase();
                         Intent intent = getIntent();
                         String farmID = intent.getStringExtra("farmID");
-                        connectDatabase.setIOT(4, "update farm set humidity_min="+minhumifitydata+",humidity_max ="+maxhumiditydata+"where farmID = "+farmID, minhumifitydata + "", maxhumiditydata + "");
+                        connectDatabase.setIOT(4, "update farm set humidity_min="+minhumifitydata+",humidity_max ="+maxhumiditydata+"where farmID = '"+farmID + "'", minhumifitydata + "", maxhumiditydata + "");
                         intent = new Intent(HumiditySettingActivity.this, FarmSettingActivity.class);
                         startActivity(intent);
                    }

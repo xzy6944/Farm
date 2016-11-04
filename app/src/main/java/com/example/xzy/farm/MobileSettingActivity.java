@@ -52,7 +52,7 @@ public class MobileSettingActivity extends Activity {
                        String farmID = dataintent.getStringExtra("farmID");
                        String userID = dataintent.getStringExtra("userID");
                        ConnectDatabase connectDatabase = new ConnectDatabase();
-                       connectDatabase.update("update user set mobile =" + mobileText.getText().toString() + "where ID =" + userID);
+                       connectDatabase.update("update user set mobile =" + mobileText.getText().toString() + "where ID = '" + userID + "'");
                        Intent intent = new Intent(MobileSettingActivity.this, UsersettingActivity.class);
                        startActivity(intent);
                    }

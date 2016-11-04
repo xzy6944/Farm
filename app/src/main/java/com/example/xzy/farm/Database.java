@@ -1,19 +1,16 @@
 package com.example.xzy.farm;
-
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by xzy on 2016/8/19.
- */
-public class Database implements Serializable{
-    private static final long serialVersionUID = 1L;
+public class Database  implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 }
 
 class User extends Database implements Serializable{
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     String id_;
     String password;
     String mobile;
@@ -42,19 +39,19 @@ class User extends Database implements Serializable{
 }
 
 class Farm extends Database implements Serializable{
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     String farmID;
     String location;
     String user_ID;
     String category_breed;
-    Integer temperature_min;
-    Integer temperature_max;
-    Float humidity_min;
-    Float humidity_max;
-    Float wind_min;
-    Float wind_max;
-    Float light_min;
-    Float light_max;
+    int temperature_min;
+    int temperature_max;
+    float humidity_min;
+    float humidity_max;
+    float wind_min;
+    float wind_max;
+    float light_min;
+    float light_max;
 
     public Farm(ResultSet resultSet) {
         try {
@@ -92,52 +89,52 @@ class Farm extends Database implements Serializable{
         return category_breed;
     }
 
-    public Integer getTemperature_min() {
+    public int getTemperature_min() {
         return temperature_min;
     }
 
-    public Integer getTemperature_max() {
+    public int getTemperature_max() {
         return temperature_max;
     }
 
-    public Float getHumidity_min() {
+    public float getHumidity_min() {
         return humidity_min;
     }
 
-    public Float getHumidity_max() {
+    public float getHumidity_max() {
         return humidity_max;
     }
 
-    public Float getWind_min() {
+    public float getWind_min() {
         return wind_min;
     }
 
-    public Float getWind_max() {
+    public float getWind_max() {
         return wind_max;
     }
 
-    public Float getLight_min() {
+    public float getLight_min() {
         return light_min;
     }
 
-    public Float getLight_max() {
+    public float getLight_max() {
         return light_max;
     }
 }
 
 class Category extends Database implements Serializable{
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     String breed;
-    Integer suitable_temperature_min;
-    Integer suitable_temperature_max;
-    Float suitable_humidity_min;
-    Float suitable_humidity_max;
-    Float suitable_wind_min;
-    Float suitable_wind_max;
-    Float suitable_light_min;
-    Float suitable_light_max;
-    Float suitable_body_temperature_min;
-    Float suitable_body_temperature_max;
+    int suitable_temperature_min;
+    int suitable_temperature_max;
+    float suitable_humidity_min;
+    float suitable_humidity_max;
+    float suitable_wind_min;
+    float suitable_wind_max;
+    float suitable_light_min;
+    float suitable_light_max;
+    float suitable_body_temperature_min;
+    float suitable_body_temperature_max;
 
     public Category(ResultSet resultSet) {
         try {
@@ -161,54 +158,54 @@ class Category extends Database implements Serializable{
         return breed;
     }
 
-    public Integer getSuitable_temperature_min() {
+    public int getSuitable_temperature_min() {
         return suitable_temperature_min;
     }
 
-    public Integer getSuitable_temperature_max() {
+    public int getSuitable_temperature_max() {
         return suitable_temperature_max;
     }
 
-    public Float getSuitable_humidity_min() {
+    public float getSuitable_humidity_min() {
         return suitable_humidity_min;
     }
 
-    public Float getSuitable_humidity_max() {
+    public float getSuitable_humidity_max() {
         return suitable_humidity_max;
     }
 
-    public Float getSuitable_wind_min() {
+    public float getSuitable_wind_min() {
         return suitable_wind_min;
     }
 
-    public Float getSuitable_wind_max() {
+    public float getSuitable_wind_max() {
         return suitable_wind_max;
     }
 
-    public Float getSuitable_light_min() {
+    public float getSuitable_light_min() {
         return suitable_light_min;
     }
 
-    public Float getSuitable_light_max() {
+    public float getSuitable_light_max() {
         return suitable_light_max;
     }
 
-    public Float getSuitable_body_temperature_min() {
+    public float getSuitable_body_temperature_min() {
         return suitable_body_temperature_min;
     }
 
-    public Float getSuitable_body_temperature_max() {
+    public float getSuitable_body_temperature_max() {
         return suitable_body_temperature_max;
     }
 }
 
 class Daily extends Database implements Serializable{
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     String type;
     Date date;
     String details;
     String farm_farmID;
-    Integer completion;
+    int completion;
 
     public Daily(ResultSet resultSet) {
         try {
@@ -238,13 +235,13 @@ class Daily extends Database implements Serializable{
         return farm_farmID;
     }
 
-    public Integer getCompletion() {
+    public int getCompletion() {
         return completion;
     }
 }
 
 class Help extends Database implements Serializable{
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     String content_;
     String category_breed;
 
@@ -267,9 +264,9 @@ class Help extends Database implements Serializable{
 }
 
 class Individual extends Database implements Serializable{
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     String individualID;
-    Integer body_temperature;
+    int body_temperature;
     String category_breed;
     String farm_farmID;
 
@@ -288,7 +285,7 @@ class Individual extends Database implements Serializable{
         return individualID;
     }
 
-    public Integer getBody_temperature() {
+    public int getBody_temperature() {
         return body_temperature;
     }
 

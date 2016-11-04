@@ -95,7 +95,7 @@ public class XDScheduleActivity extends Activity {
 
         child_1 = new ArrayList<String>();
         child_1_complete = new ArrayList<Integer>();
-        ArrayList<Daily> rs1 = connect.queryDaily("select * from daily_management where farm_farmID = " + farmID + " and type = '3" + " and date = '" + cal.get(Calendar.YEAR) + "-"+ (cal.get(Calendar.MONTH) + 1) + "-"+ cal.get(Calendar.DAY_OF_MONTH) + "'");
+        ArrayList<Daily> rs1 = connect.queryDaily("select * from daily_management where farm_farmID = '" + farmID + "' and type = '3'" + " and date = '" + cal.get(Calendar.YEAR) + "-"+ (cal.get(Calendar.MONTH) + 1) + "-"+ cal.get(Calendar.DAY_OF_MONTH) + "'");
         for(int i = 0; i < rs1.size(); i++){
             child_1.add(rs1.get(i).getDetails());
             child_1_complete.add(rs1.get(i).getCompletion());
@@ -110,7 +110,7 @@ public class XDScheduleActivity extends Activity {
         child_2_complete = new ArrayList<Integer>();
         cal1.add(Calendar.DAY_OF_MONTH, +1);
         cal2.add(Calendar.DAY_OF_MONTH, +7);
-        ArrayList<Daily> rs2 = connect.queryDaily("select * from daily_management where farm_farmID = " + farmID + " and type = '3'" + " and date between '" + cal1.get(Calendar.YEAR) + "-"+ (cal1.get(Calendar.MONTH) + 1) + "-"+ cal1.get(Calendar.DAY_OF_MONTH) + "' and '" + cal2.get(Calendar.YEAR) + "-"+ (cal2.get(Calendar.MONTH) + 1) + "-"+ cal2.get(Calendar.DAY_OF_MONTH) + "'");
+        ArrayList<Daily> rs2 = connect.queryDaily("select * from daily_management where farm_farmID = '" + farmID + "' and type = '3'" + " and date between '" + cal1.get(Calendar.YEAR) + "-"+ (cal1.get(Calendar.MONTH) + 1) + "-"+ cal1.get(Calendar.DAY_OF_MONTH) + "' and '" + cal2.get(Calendar.YEAR) + "-"+ (cal2.get(Calendar.MONTH) + 1) + "-"+ cal2.get(Calendar.DAY_OF_MONTH) + "'");
         for(int i = 0; i < rs2.size(); i++){
             child_2.add(rs2.get(i).getDetails());
             child_2_complete.add(rs2.get(i).getCompletion());
@@ -212,13 +212,13 @@ public class XDScheduleActivity extends Activity {
                             if(XDScheduleActivity.this.child_1_complete.get(childPosition) == 0){
                                 star.setBackgroundResource(R.drawable.star_yellow);
                                 XDScheduleActivity.this.child_1_complete.set(childPosition, 1);
-                                connect.update("update daily_management set completion = 1 where farm_farmID = "  + farmID + " and type = '3'" + " and details = '" + XDScheduleActivity.this.child_1.get(childPosition) + "'");
+                                connect.update("update daily_management set completion = 1 where farm_farmID = '"  + farmID + "' and type = '3'" + " and details = '" + XDScheduleActivity.this.child_1.get(childPosition) + "'");
 
                             }
                             else{
                                 star.setBackgroundResource(R.drawable.star_gray);
                                 XDScheduleActivity.this.child_1_complete.set(childPosition, 0);
-                                connect.update("update daily_management set completion = 0 where farm_farmID = "  + farmID + " and type = '3'" + " and details = '" + XDScheduleActivity.this.child_1.get(childPosition) + "'");
+                                connect.update("update daily_management set completion = 0 where farm_farmID = '"  + farmID + "' and type = '3'" + " and details = '" + XDScheduleActivity.this.child_1.get(childPosition) + "'");
 
                             }
                             break;
@@ -226,13 +226,13 @@ public class XDScheduleActivity extends Activity {
                             if(XDScheduleActivity.this.child_2_complete.get(childPosition) == 0){
                                 star.setBackgroundResource(R.drawable.star_yellow);
                                 XDScheduleActivity.this.child_2_complete.set(childPosition, 1);
-                                connect.update("update daily_management set completion = 1 where farm_farmID = "  + farmID + " and type = '3'" + " and details = '" + XDScheduleActivity.this.child_2.get(childPosition) + "'");
+                                connect.update("update daily_management set completion = 1 where farm_farmID = '"  + farmID + "' and type = '3'" + " and details = '" + XDScheduleActivity.this.child_2.get(childPosition) + "'");
 
                             }
                             else{
                                 star.setBackgroundResource(R.drawable.star_gray);
                                 XDScheduleActivity.this.child_2_complete.set(childPosition, 0);
-                                connect.update("update daily_management set completion = 0 where farm_farmID = "  + farmID + " and type = '3'" + " and details = '" + XDScheduleActivity.this.child_2.get(childPosition) + "'");
+                                connect.update("update daily_management set completion = 0 where farm_farmID = '"  + farmID + "' and type = '3'" + " and details = '" + XDScheduleActivity.this.child_2.get(childPosition) + "'");
 
                             }
                             break;

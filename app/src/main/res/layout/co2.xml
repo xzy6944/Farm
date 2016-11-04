@@ -65,17 +65,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_gravity="right"
-            android:textSize="60sp"
+            android:textSize="30sp"
+            android:layout_marginLeft="10dp"
             android:text="1000ppm以下"
-            android:textColor="@color/blue"/>
+            android:textColor="@color/blue"
+            android:layout_gravity="right" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="30dp"
-            android:textSize="22sp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
             android:text="*CO2浓度在1000ppm以下时，最适宜动物活动。"
             android:textColor="@color/text_Green"/>
 

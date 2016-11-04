@@ -61,8 +61,7 @@
     <LinearLayout style="@style/wrap_layout" >
 
         <LinearLayout style="@style/single_layout">
-            <TextView style="@style/usertext" android:text="查看当前已设置的各项数据" />
-            <ImageView style="@style/img_arrow"/>
+
         </LinearLayout>
     </LinearLayout>
 

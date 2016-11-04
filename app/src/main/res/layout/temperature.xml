@@ -49,6 +49,7 @@
         <Button
             android:layout_width="125dp"
             android:layout_height="125dp"
+            android:id="@+id/increasetemperature"
             android:background="@drawable/red_circle_button"
             android:text="升温"
             android:textSize="40sp"

@@ -8,10 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-
-import javax.sql.RowSet;
 
 /**
  * Created by xzy on 2016/8/19.
@@ -26,7 +23,7 @@ public class ConnectDatabase {
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -49,7 +46,7 @@ public class ConnectDatabase {
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -82,7 +79,7 @@ public class ConnectDatabase {
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -112,7 +109,7 @@ public class ConnectDatabase {
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -138,11 +135,12 @@ public class ConnectDatabase {
     public ArrayList<Farm> queryFarm(final String sql){
         final ArrayList<Farm>[] rs = new ArrayList[]{new ArrayList<>()};
         final boolean[] running = {true};
+        final String[] s = {null};
         new Thread(){
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -172,7 +170,7 @@ public class ConnectDatabase {
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -202,7 +200,7 @@ public class ConnectDatabase {
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -228,11 +226,12 @@ public class ConnectDatabase {
     public ArrayList<User> queryUser(final String sql){
         final ArrayList<User>[] rs = new ArrayList[]{new ArrayList<>()};
         final boolean[] running = {true};
+        final String[] s = {null};
         new Thread(){
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25160);
+                    Socket socket = new Socket("123.206.14.34", 25160);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     ObjectInputStream oip = new ObjectInputStream(socket.getInputStream());
@@ -251,6 +250,7 @@ public class ConnectDatabase {
                     }catch (Exception e){
                         e.printStackTrace();
                     }
+//                    s[0] = fromServer.readLine().replace("\n", "");
                     Log.d("MainActivity", "返回成功");
                     running[0] = false;
 

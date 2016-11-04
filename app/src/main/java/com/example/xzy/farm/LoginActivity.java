@@ -13,8 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class LoginActivity extends Activity {
     private static final int REQUEST_CODE = 1;
 
@@ -42,11 +40,11 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "请输入账号和密码！",Toast.LENGTH_SHORT).show();
                 }else{
                     ConnectDatabase connect = new ConnectDatabase();
-                    ArrayList<User> rs = connect.queryUser("select * from User where ID = " + u);
-                    if(p.equals(rs.get(0).getPassword())){
+                    String s = connect.queryUser("select * from User where ID = " + u).get(0).getPassword();
+                    if(!s.isEmpty() && p.equals(s)){
                         Toast.makeText(LoginActivity.this, "登陆成功！",Toast.LENGTH_SHORT).show();
-                        ArrayList<Farm> rs1 = connect.queryFarm("select * from Farm where user_id = " + u);
-                        String farmID = rs1.get(0).getFarmID();
+                        String s1 = connect.queryFarm("select * from Farm where user_id = " + u).get(0).getFarmID();
+                        String farmID = s1;
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("farmID", farmID);
                         intent.putExtra("userID", u);
@@ -55,6 +53,8 @@ public class LoginActivity extends Activity {
                         Toast.makeText(LoginActivity.this, "账号或密码错误！",Toast.LENGTH_SHORT).show();
                     }
                 }
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

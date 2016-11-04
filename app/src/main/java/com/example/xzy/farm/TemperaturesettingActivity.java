@@ -60,7 +60,7 @@ public class TemperaturesettingActivity extends Activity {
                     Intent intent = getIntent();
                     String farmID = intent.getStringExtra("farmID");
                     ConnectDatabase connectDatabase = new ConnectDatabase();
-                    connectDatabase.setIOT(3, "update farm set temperature_min ="+mintpdata+",temperature_max ="+maxtpdata+"where farmID ="+farmID, mintpdata + "", maxtpdata + "");
+                    connectDatabase.setIOT(3, "update farm set temperature_min ='"+mintpdata+",temperature_max ='"+maxtpdata+"' where farmID ='"+farmID + "'", mintpdata + "", maxtpdata + "");
                     intent = new Intent(TemperaturesettingActivity.this, FarmSettingActivity.class);
                     startActivity(intent);
                 }

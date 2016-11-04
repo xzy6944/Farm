@@ -59,7 +59,7 @@ public class LightsettingActivity extends Activity {
                     Intent intent = getIntent();
                     String farmID = intent.getStringExtra("farmID");
                     ConnectDatabase connectDatabase = new ConnectDatabase();
-                    connectDatabase.setIOT(2, "update farm set light_min="+minlightdata+",light_max ="+maxlightdata+"where farmID = "+farmID, minlightdata + "", maxlightdata + "");
+                    connectDatabase.setIOT(2, "update farm set light_min="+minlightdata+",light_max ="+maxlightdata+"where farmID = '"+farmID + "'", minlightdata + "", maxlightdata + "");
                     intent = new Intent(LightsettingActivity.this, FarmSettingActivity.class);
                     startActivity(intent);
                 }

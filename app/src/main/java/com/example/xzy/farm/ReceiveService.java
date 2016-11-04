@@ -5,7 +5,6 @@ import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
@@ -16,7 +15,6 @@ import android.view.WindowManager;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -166,7 +164,7 @@ public class ReceiveService extends Service{
             @Override
             public void run() {
                 try{
-                    Socket socket = new Socket("192.168.124.1", 25162);
+                    Socket socket = new Socket("123.206.14.34", 25162);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     Log.d("ReceiveService", "连接成功");
@@ -185,6 +183,21 @@ public class ReceiveService extends Service{
                 }
             }
         }.start();
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(20000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                Message message = new Message();
+//                s = "养殖场温度过高！";
+//                message.what = 2;
+//                mHandler.sendMessage(message);
+//            }
+//        }).start();
 
         final Intent intentWD = new Intent();
         intentWD.setAction("WD");

@@ -61,7 +61,7 @@ public class BodyTemperaturesettingActivity extends Activity {
                      ConnectDatabase connectdatabse = new ConnectDatabase();
                      Intent intent = getIntent();
                      String farmID = intent.getStringExtra("farmID");
-                     ArrayList<Farm>array  = connectdatabse.queryFarm("select * from farm where farmID = "+farmID);
+                     ArrayList<Farm> array  = connectdatabse.queryFarm("select * from farm where farmID = '"+farmID + "'");
                      String categorydata = array.get(3).getCategory_breed();
                      connectdatabse.setIOT(1, "update category set suitable_body_temperature_min ="+mintpdata+",suitable_body_temperature_max"+maxtpdata+ "where category = "+categorydata, mintpdata + "", maxtpdata + "");
                      intent = new Intent(BodyTemperaturesettingActivity.this, FarmSettingActivity.class);
