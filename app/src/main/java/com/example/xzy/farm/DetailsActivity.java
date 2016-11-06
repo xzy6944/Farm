@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,7 +52,7 @@ public class DetailsActivity extends Activity implements ScrollViewListener, Vie
         duckbutton = (Button)findViewById(R.id.duckbutton);
         gossiebutton = (Button)findViewById(R.id.gossiebutton);
 
-        //content.setMovementMethod(ScrollingMovementMethod.getInstance());
+        content.setMovementMethod(ScrollingMovementMethod.getInstance());
         chickenbutton.setOnClickListener(this);
         duckbutton.setOnClickListener(this);
         gossiebutton.setOnClickListener(this);
@@ -67,7 +69,7 @@ public class DetailsActivity extends Activity implements ScrollViewListener, Vie
             //  把内容复制给String
             String contents = new String(buffer,"GB2312");
             content.setText(contents);
-
+            content.setTextColor(Color.parseColor("#c8cdd0"));
             //  初始化设计滑动距离只能这样写
             //  mScrollView.smoothScrollTo()或mScrollView.mScrollView.scrollTo()均无效!
             //  根据记录的y来回到上次离开的地方
@@ -105,7 +107,7 @@ public class DetailsActivity extends Activity implements ScrollViewListener, Vie
                     //  把内容复制给String
                     String contents = new String(buffer,"GB2312");
                     content.setText(contents);
-
+                    content.setTextColor(Color.parseColor("#c8cdd0"));
                     //  初始化设计滑动距离只能这样写
                     //  mScrollView.smoothScrollTo()或mScrollView.mScrollView.scrollTo()均无效!
                     //  根据记录的y来回到上次离开的地方
@@ -139,7 +141,7 @@ public class DetailsActivity extends Activity implements ScrollViewListener, Vie
                     //  把内容复制给String
                     String contents = new String(buffer,"GB2312");
                     content.setText(contents);
-
+                    content.setTextColor(Color.parseColor("#c8cdd0"));
                     //  初始化设计滑动距离只能这样写
                     //  mScrollView.smoothScrollTo()或mScrollView.mScrollView.scrollTo()均无效!
                     //  根据记录的y来回到上次离开的地方

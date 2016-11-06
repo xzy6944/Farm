@@ -1,46 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/dark_background">
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="取消"
-            android:textColor="@color/blue"
-            android:id="@+id/btpsettingbutton1"
-            android:background="#FFFFFF"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="30dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="养殖体体温设置"
-            android:textSize="25sp"
-            android:textColor="@color/blue"
-            android:layout_marginLeft="20dp"
+            android:textColor="@color/light_blue"
+            android:textSize="20sp"
+            android:background="#00000000"
+            android:id="@+id/btpsettingbutton1" />
 
-            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="养殖体体温设置"
+            android:textSize="30sp"
+            android:textColor="@color/light_blue"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="确定"
-            android:textColor="@color/blue"
-            android:background="#FFFFFF"
-            android:id="@+id/btpsettingbutton2"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="40dp"
-            android:layout_marginLeft="25dp"
-            android:layout_alignParentEnd="true" />
-
-
-
+            android:textColor="@color/light_blue"
+            android:textSize="20sp"
+            android:background="#00000000"
+            android:id="@+id/btpsettingbutton2"/>
 
     </LinearLayout>
 
@@ -52,49 +47,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+        android:layout_marginTop="20dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置最低体温:"
-            android:textSize="20sp"
             android:textColor="@color/blue"
-            />
+            android:textSize="30sp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:id="@+id/btpminsettingtext"
-            android:hint="点这里设置体温"
+            android:text="点这里设置体温"
+            android:textColor="@color/light_text"
             android:layout_below="@+id/button9"
             android:layout_centerHorizontal="true"
-            android:onClick="onMinNumberPicker"
-            />
-
-
+            android:onClick="onMinNumberPicker"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+        android:layout_marginTop="20dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置最高体温:"
-            android:textSize="20sp"
-            android:textColor="@color/blue"/>
+            android:textColor="@color/blue"
+            android:textSize="30sp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:id="@+id/btpmaxsettingtext"
-            android:hint="点这里设置体温"
+            android:text="点这里设置体温"
+            android:textColor="@color/light_text"
             android:layout_below="@+id/button9"
             android:layout_centerHorizontal="true"
-            android:onClick="onMaxNumberPicker"
-            />
+            android:onClick="onMaxNumberPicker"/>
 
     </LinearLayout>
 

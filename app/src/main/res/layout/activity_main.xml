@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="@drawable/manager1">
+                android:background="@color/dark_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,28 +11,39 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/new_main_bk">
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_alignParentRight="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/menu"/>
 
         <LinearLayout
-            android:layout_width="290dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginLeft="45dp">
+            android:layout_width="350dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginLeft="15dp">
 
             <ImageView
                 android:id="@+id/toMMS"
+                android:background="@drawable/icon_my"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <ImageView
                 android:id="@+id/toBJS"
+                android:background="@drawable/icon_bj"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <ImageView
                 android:id="@+id/toXDS"
+                android:background="@drawable/icon_xd"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -94,29 +105,5 @@
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:id="@+id/toMenu"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:id="@+id/toChart"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:id="@+id/toSetting"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"/>
-    </LinearLayout>
 
 </RelativeLayout>

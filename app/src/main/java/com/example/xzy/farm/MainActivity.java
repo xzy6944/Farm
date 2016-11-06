@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainActivity extends Activity {
+import com.special.ResideMenu.ResideMenu;
+import com.special.ResideMenu.ResideMenuItem;
+
+public class MainActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,30 +21,9 @@ public class MainActivity extends Activity {
         final String farmID = intent.getStringExtra("farmID");
         final String userID = intent.getStringExtra("userID");
 
+        //TODO test
         Intent startIntent = new Intent(this, ReceiveService.class);
         startService(startIntent);
-
-        final ImageView image1 = (ImageView) findViewById(R.id.toSetting);
-        image1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
-                intent.putExtra("farmID", farmID);
-                intent.putExtra("userID", userID);
-                startActivity(intent);
-            }
-        });
-
-        final ImageView image2 = (ImageView) findViewById(R.id.toChart);
-        image2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,SomeActivity.class);
-                intent.putExtra("userID", userID);
-                intent.putExtra("farmID", farmID);
-                startActivity(intent);
-            }
-        });
 
         ImageView image_to_MMS = (ImageView) findViewById(R.id.toMMS);
         image_to_MMS.setOnClickListener(new View.OnClickListener() {
@@ -132,5 +114,44 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        // attach to current activity;
+        final ResideMenu resideMenu = new ResideMenu(this);
+        resideMenu.setBackground(R.color.light_background);
+        resideMenu.attachToActivity(this);
+
+        ResideMenuItem itemChart = new ResideMenuItem(this, R.drawable.menu_chart, "市场走势");
+        itemChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SomeActivity.class);
+                intent.putExtra("userID", userID);
+                intent.putExtra("farmID", farmID);
+                startActivity(intent);
+                resideMenu.closeMenu();
+            }
+        });
+        resideMenu.addMenuItem(itemChart,  ResideMenu.DIRECTION_RIGHT); // or  ResideMenu.DIRECTION_RIGHT
+
+        ResideMenuItem itemUser = new ResideMenuItem(this, R.drawable.menu_user, "用户");
+        itemUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                intent.putExtra("farmID", farmID);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+                resideMenu.closeMenu();
+            }
+        });
+        resideMenu.addMenuItem(itemUser,  ResideMenu.DIRECTION_RIGHT); // or  ResideMenu.DIRECTION_RIGHT
+
+        findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
+            }
+        });
     }
+
 }

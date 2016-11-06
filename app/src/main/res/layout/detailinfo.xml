@@ -9,29 +9,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.xzy.farm.SomeActivity"
     android:id="@+id/id1"
-    >
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:text="详细信息"
-        android:background="#FFFFFF"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button2" />
+                android:gravity="center|bottom"
+    android:background="@color/dark_background">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="退出"
-        android:layout_marginBottom="10dp"
-        android:background="#FFFFFF"
-        android:id="@+id/button"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignParentEnd="true"/>
+        android:text="详细信息"
+        android:textColor="@color/light_text"
+        android:background="@color/light_background"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/button2"/>
+
 
 
 </RelativeLayout>

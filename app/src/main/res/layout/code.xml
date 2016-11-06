@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:hint="输入你的新账号"
+            android:textColor="@color/light_text"
             android:textColorHint="@color/light_text"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -46,7 +47,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:maxLines="1"
-            />
+            android:textColor="@color/light_text"/>
 
         <TextView
             android:layout_height="wrap_content"
@@ -63,7 +64,8 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"/>
+            android:layout_marginRight="30dp"
+            android:textColor="@color/light_text"/>
     </LinearLayout>
 
     <include layout="@layout/selectkind"
@@ -90,6 +92,7 @@
             android:id="@+id/code"
             android:layout_height="wrap_content"
             android:textColorHint="@color/light_text"
+            android:textColor="@color/light_text"
             android:layout_width="match_parent"
             android:hint="请输入验证码"
             android:maxLines="1"/>
@@ -143,8 +146,7 @@
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="50dp">
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/sign_up"

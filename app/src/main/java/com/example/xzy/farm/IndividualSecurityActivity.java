@@ -72,7 +72,7 @@ public class IndividualSecurityActivity extends Activity {
         db = mScheduleHelper.getWritableDatabase();
 
         map = new HashMap<String, List<SecurityInfo>>();
-        // TODO 连接sqlite
+
         child_1 = new ArrayList<SecurityInfo>();
         Cursor c = db.rawQuery("select * from Schedule where type = 1 and read = 0", null);
         if (c.getCount() == 0){
@@ -88,7 +88,7 @@ public class IndividualSecurityActivity extends Activity {
         map.put("未读", child_1);
 
         child_2 = new ArrayList<SecurityInfo>();
-        c = db.rawQuery("select * from Schedule where type = 1 and read = 1", null);//TODO
+        c = db.rawQuery("select * from Schedule where type = 1 and read = 1", null);
         if (c.getCount() == 0){
             child_2.add(new SecurityInfo("无", "暂无已读消息。"));
         }else{

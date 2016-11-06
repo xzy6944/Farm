@@ -54,20 +54,20 @@ public class AverageTemperatureChart extends AbstractDemoChart {
         }
 
         // 图表部分的背景颜色
-        renderer.setBackgroundColor(Color.parseColor("#f3f3f3"));
+        renderer.setBackgroundColor(Color.parseColor("#262d33"));
         renderer.setApplyBackgroundColor(true);
         // 图表与屏幕四边的间距颜色
         renderer.setMarginsColor(Color.argb(0, 0xF3, 0xF3, 0xF3));
-        renderer.setChartTitleTextSize(30);
-        renderer.setAxisTitleTextSize(25);
+        renderer.setChartTitleTextSize(40);
+        renderer.setAxisTitleTextSize(30);
         // renderer.setLegendHeight(50);
         // 图例文字的大小
-        renderer.setLegendTextSize(20);
+        renderer.setLegendTextSize(25);
         renderer.setMargins(new int[] { 50, 50, 50, 30 });
         // x、y轴上刻度颜色
-        renderer.setXLabelsColor(Color.BLACK);
-        renderer.setYLabelsColor(0, Color.BLACK);
-        setChartSettings(renderer, "市场趋势", "Month", "价格走势", 0.5, 12.5, -10, 40,
+        renderer.setXLabelsColor(Color.WHITE);
+        renderer.setYLabelsColor(0, Color.WHITE);
+        setChartSettings(renderer, "市场趋势", "Month", "价格走势", 0.5, 12.5, 0, 40,
                 Color.BLACK, Color.BLACK);//调用AbstractDemoChart中的方法设置图表的renderer属性.
         renderer.setXLabels(12);//设置x轴显示12个点,根据setChartSettings的最大值和最小值自动计算点的间隔
         renderer.setYLabels(10);//设置y轴显示10个点,根据setChartSettings的最大值和最小值自动计算点的间隔

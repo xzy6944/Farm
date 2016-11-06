@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFF0">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/dark_background">
 
-    <LinearLayout style="@style/wrap_layout" >
+    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="20dp">
         <!-- 上圆角-->
         <LinearLayout style="@style/top_layout">
-            <TextView style="@style/usertext" android:text="账号" />
+            <TextView style="@style/usertext" android:text="账号" android:textColor="@color/light_text" />
         </LinearLayout>
 
         <!-- 分割线 -->
@@ -16,9 +16,8 @@
 
         <!-- 无圆角-->
         <LinearLayout style="@style/mid_layout"
-            android:id="@+id/topasswordsetting"
-            >
-            <TextView style="@style/usertext" android:text="更改密码" />
+            android:id="@+id/topasswordsetting"            >
+            <TextView style="@style/usertext" android:text="更改密码" android:textColor="@color/light_text" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
@@ -26,9 +25,8 @@
         <View style="@style/bg_line"/>
         <!-- 无圆角-->
         <LinearLayout style="@style/mid_layout"
-            android:id="@+id/toaddresssetting"
-            >
-            <TextView style="@style/usertext" android:text="所在地" />
+            android:id="@+id/toaddresssetting"            >
+            <TextView style="@style/usertext" android:text="所在地" android:textColor="@color/light_text" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
@@ -37,16 +35,16 @@
         <!-- 下圆角-->
         <LinearLayout style="@style/bottom_layout"
             android:id="@+id/tomobilesetting">
-            <TextView style="@style/usertext" android:text="绑定手机"/>
+            <TextView style="@style/usertext" android:text="绑定手机" android:textColor="@color/light_text"/>
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout style="@style/wrap_layout" >
+    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="50dp">
         <!-- 上圆角-->
         <LinearLayout style="@style/single_layout">
-            <TextView style="@style/usertext" android:text="发布微博" />
+            <TextView style="@style/usertext" android:text="发布微博" android:textColor="@color/light_text" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
@@ -54,7 +52,7 @@
 
 
     <!-- 全圆角-->
-    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="50dp">
+    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="100dp">
 
         <LinearLayout style="@style/single_layout">
             <Button
@@ -63,8 +61,8 @@
                 android:layout_gravity="center"
                 android:text="退出登录"
                 android:id="@+id/logout"
-                android:textColor="#FF6495ED"
-                />
+                android:textColor="@color/light_text"
+                android:background="@color/red_dark"/>
         </LinearLayout>
 
     </LinearLayout>

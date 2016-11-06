@@ -21,7 +21,7 @@
             android:paddingLeft="10dp"
             android:text="123"
             android:textSize="50sp"
-            android:textColor="@color/blue"/>
+            android:textColor="@color/light_blue"/>
 
         <ImageView
             android:id="@+id/arrow"

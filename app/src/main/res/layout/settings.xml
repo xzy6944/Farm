@@ -3,16 +3,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="#F0F3F6">
+              android:background="@color/dark_background">
 
 
-    <LinearLayout style="@style/wrap_layout" >
+    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="20dp">
         <!-- 上圆角-->
         <LinearLayout style="@style/top_layout"
-                      android:id="@+id/settinglayout1"
-            >
-
-            <TextView style="@style/usertext" android:text="账号管理" />
+                      android:id="@+id/settinglayout1">
+            <TextView style="@style/usertext" android:text="账号管理" android:textColor="@color/light_text"/>
             <ImageView style="@style/img_arrow"/>
 
         </LinearLayout>
@@ -23,32 +21,27 @@
         <!-- 无圆角-->
 
         <LinearLayout style="@style/mid_layout"
-                      android:id="@+id/settinglayout2"
-            >
-
-            <TextView style="@style/usertext" android:text="养殖场管理" />
+                      android:id="@+id/settinglayout2">
+            <TextView style="@style/usertext" android:text="养殖场管理" android:textColor="@color/light_text"/>
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
         <!-- 分割线 -->
         <View style="@style/bg_line"/>
 
-
         <!-- 下圆角-->
         <LinearLayout style="@style/bottom_layout"
-                      android:id="@+id/settinglayout3"
-            >
-
-            <TextView style="@style/usertext" android:text="设置" />
+                      android:id="@+id/settinglayout3">
+            <TextView style="@style/usertext" android:text="设置" android:textColor="@color/light_text" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout style="@style/wrap_layout" >
+    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="50dp">
         <!-- 上圆角-->
         <LinearLayout style="@style/top_layout">
-            <TextView style="@style/usertext" android:text="意见反馈" />
+            <TextView style="@style/usertext" android:text="意见反馈" android:textColor="@color/light_text" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
@@ -56,7 +49,7 @@
 
         <!-- 下圆角-->
         <LinearLayout style="@style/bottom_layout">
-            <TextView style="@style/usertext" android:text="检查更新" />
+            <TextView style="@style/usertext" android:text="检查更新" android:textColor="@color/light_text" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 
@@ -64,9 +57,9 @@
 
 
     <!-- 全圆角-->
-    <LinearLayout style="@style/wrap_layout">
+    <LinearLayout style="@style/wrap_layout" android:layout_marginTop="50dp">
         <LinearLayout style="@style/single_layout">
-            <TextView style="@style/usertext" android:text="关于"/>
+            <TextView style="@style/usertext" android:text="关于" android:textColor="@color/light_text"/>
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
 

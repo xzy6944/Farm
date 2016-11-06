@@ -39,6 +39,13 @@ public class LoginActivity extends Activity {
                 if(u.isEmpty() || p.isEmpty()){
                     Toast.makeText(LoginActivity.this, "请输入账号和密码！",Toast.LENGTH_SHORT).show();
                 }else{
+
+//                    //TODO test
+//                    {Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                    intent.putExtra("farmID", "1");
+//                    intent.putExtra("userID", "1");
+//                    startActivity(intent);}
+
                     ConnectDatabase connect = new ConnectDatabase();
                     String s = connect.queryUser("select * from User where ID = " + u).get(0).getPassword();
                     if(!s.isEmpty() && p.equals(s)){
@@ -53,8 +60,7 @@ public class LoginActivity extends Activity {
                         Toast.makeText(LoginActivity.this, "账号或密码错误！",Toast.LENGTH_SHORT).show();
                     }
                 }
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+
             }
         });
 

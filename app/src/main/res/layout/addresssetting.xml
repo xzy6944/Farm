@@ -3,140 +3,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+    android:background="@color/dark_background">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/light_background">
 
-        >
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="取消"
-            android:background="#FFFFFF"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/addressbutton1"
-            />
+            android:textColor="@color/light_blue"
+            android:textSize="20sp"
+            android:background="#00000000"
+            android:id="@+id/addressbutton1"/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="请选择您的地址"
-            android:textSize="23sp"
-            android:textColor="@color/blue"
-            android:layout_marginLeft="5dp"
-            />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/light_blue"
+            android:text="请选择您的地址"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="确定"
-            android:background="#FFFFFF"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/addressbutton2"
-            />
+            android:textColor="@color/light_blue"
+            android:textSize="20sp"
+            android:background="#00000000"
+            android:id="@+id/addressbutton2"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="省："
-            android:textSize="30sp"
+            android:textColor="@color/blue"
+            android:textSize="30sp"/>
 
-            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:hint="所在省份"
+            android:text="所在省份"
             android:id="@+id/addressedit1"
-            />
+            android:textColor="@color/light_text"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        >
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp">
 
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="市："
             android:textSize="30sp"
+            android:textColor="@color/blue"/>
 
-            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:hint="所在市区"
+            android:text="所在市区"
             android:id="@+id/addressedit2"
-            />
+            android:textColor="@color/light_text"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        >
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp">
 
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="县："
             android:textSize="30sp"
+            android:textColor="@color/blue"/>
 
-            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:hint="所在的县"
+            android:text="所在的县"
             android:id="@+id/addressedit3"
-            />
+            android:textColor="@color/light_text"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        >
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="点此设置地址"
-            android:background="#FFFFFF"
-            android:textColor="@color/blue"
-            android:textSize="25sp"
-            android:onClick="onAddressPicker"
-            android:id="@+id/adressbutton"
-            />
 
-
-    </LinearLayout>
+    <Button
+        android:layout_width="354dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="150dp"
+        android:text="点此设置地址"
+        android:background="@drawable/button_bg"
+        android:textColor="@color/dark_background"
+        android:textSize="35sp"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onAddressPicker"
+        android:id="@+id/adressbutton"/>
 
 </LinearLayout>

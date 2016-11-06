@@ -87,7 +87,7 @@ public class ReceiveService extends Service{
                     ad.show();
                 }
                     break;
-                case 4://TODO 盗窃 sqlite
+                case 4:
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ReceiveService.this);
                     builder.setTitle("安全提示");
@@ -107,7 +107,7 @@ public class ReceiveService extends Service{
                     db.execSQL("insert into Schedule (type, time, details, read) values(?, ?, ?, ?)", new String[]{"0", format.format(date), s.replace("\n", ""), "0"});
                 }
                     break;
-                case 5://TODO 个体 sqlite
+                case 5:
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ReceiveService.this);
                     builder.setTitle("安全提示");
@@ -126,18 +126,6 @@ public class ReceiveService extends Service{
                     date = new Date();
                     db.execSQL("insert into Schedule (type, time, details, read) values(?, ?, ?, ?)", new String[]{"1", format.format(date), s.replace("\n", ""), "0"});
                 }
-                    break;
-                case 11:
-                    wd = Integer.parseInt(s.replace("\n", ""));
-                    break;
-                case 12://湿度
-                    sd = Integer.parseInt(s.replace("\n", ""));
-                    break;
-                case 13://光照
-                    gz = Integer.parseInt(s.replace("\n", ""));
-                    break;
-                case 14://co2
-                    co2 = Integer.parseInt(s.replace("\n", ""));
                     break;
                 default:
                     break;
@@ -165,6 +153,33 @@ public class ReceiveService extends Service{
             public void run() {
                 try{
                     Socket socket = new Socket("123.206.14.34", 25162);
+                    BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
+                    PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
+                    Log.d("ReceiveService", "连接成功");
+                    Message message = new Message();
+                    while(true){
+                        s = fromServer.readLine();
+                        wd = Integer.parseInt(s.replace("\n", ""));
+                        s = fromServer.readLine();
+                        sd = Integer.parseInt(s.replace("\n", ""));
+                        s = fromServer.readLine();
+                        co2 = Integer.parseInt(s.replace("\n", ""));
+                        s = fromServer.readLine();
+                        gz = Integer.parseInt(s.replace("\n", ""));
+
+                        Log.d("ReceiveService", "read");
+                    }
+
+                }catch (Exception ex){
+                }
+            }
+        }.start();
+
+        new Thread(){
+            @Override
+            public void run() {
+                try{
+                    Socket socket = new Socket("123.206.14.34", 25164);
                     BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream(), "gb2312"));
                     PrintWriter toServer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "gb2312"));
                     Log.d("ReceiveService", "连接成功");
